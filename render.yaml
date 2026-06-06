@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: move-up
+    runtime: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_VERSION
+        value: 24
+      - key: FITCHECK_DB_PATH
+        value: /var/data/fitcheck.sqlite
+    disk:
+      name: move-up-data
+      mountPath: /var/data
+      sizeGB: 1
+

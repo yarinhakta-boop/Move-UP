@@ -1,0 +1,10 @@
+node_modules/
+.env
+.DS_Store
+Thumbs.db
+
+# Banco local e arquivos gerados em desenvolvimento.
+data/*.sqlite
+data/*.sqlite-*
+*.log
+
