@@ -3,20 +3,36 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Fit Check | Plano Semanal Seguro</title>
+  <meta name="theme-color" content="#2f7d5a" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-title" content="Move Up" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <title>Move Up | Plano Semanal Seguro</title>
+  <script>
+    if (window.location.hash === "#descanso") {
+      history.replaceState(null, "", `${window.location.pathname}${window.location.search}#avaliacao`);
+    }
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="icon" href="assets/move-up-icon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="assets/move-up-icon.svg" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <header class="hero">
     <img src="assets/treino-hero-inclusivo.png" alt="Pessoas obesas treinando em academia com esteira e equipamentos" class="hero__image" />
     <nav class="topbar" aria-label="Navegação principal">
-      <a href="#treino" class="brand">Fit Check</a>
+      <a href="#conta" class="brand">Move Up</a>
       <div class="navlinks">
+        <a href="#conta">Conta</a>
+        <a href="#moda-plus">Moda Plus</a>
         <a href="#avaliacao">Avaliação</a>
-        <a href="#progresso">Progresso</a>
+        <a href="#progresso">Meu Progresso</a>
+        <a href="#alimentacao">Alimentação</a>
         <a href="#historico">Histórico</a>
       </div>
     </nav>
@@ -25,8 +41,9 @@
       <h1>Treino seguro.</h1>
       <p class="hero__text">Um plano semanal de baixo impacto para pessoas obesas, com cuidado para joelhos, quadril e lombar, alternando membros, esteira e recuperação.</p>
       <div class="hero__actions">
-        <a class="button button--primary" href="#avaliacao">Fazer avaliação</a>
-        <a class="button button--ghost" href="#descanso">Timer de descanso</a>
+        <a class="button button--primary" href="#conta">Entrar ou criar conta</a>
+        <a class="button button--ghost" href="#moda-plus">Roupas fitness plus size</a>
+        <a class="button button--ghost" href="#montagem">Escolher treino</a>
       </div>
     </section>
   </header>
@@ -51,7 +68,190 @@
       </article>
     </section>
 
-    <section id="avaliacao" class="section assessment-section">
+    <section id="moda-plus" class="section shop-section">
+      <div class="section__intro">
+        <p class="eyebrow">Moda fitness plus size</p>
+        <h2>Roupas para treinar com conforto</h2>
+        <p>Achadinhos com links afiliados de roupas fitness plus size para quem tem dificuldade de encontrar peças bonitas, firmes e confortáveis em tamanhos maiores.</p>
+        <div class="affiliate-safety">
+          <strong>Segurança e transparência</strong>
+          <p>A Move Up não vende diretamente estes produtos. A compra, o pagamento, a entrega e qualquer suporte acontecem no site da loja ou do vendedor. Antes de comprar, confira medidas, avaliações com fotos reais, reputação, prazo, frete e regras do anúncio.</p>
+          <div class="trust-badges" aria-label="Selos de compra segura">
+            <span><b>🔗</b> Links afiliados de roupas fitness plus size</span>
+            <span><b>✓</b> Link afiliado</span>
+            <span><b>★</b> Avaliações reais</span>
+            <span><b>↔</b> Tabela de medidas</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="shop-panel">
+        <article class="shop-card">
+          <span>Mercado Livre</span>
+          <h3>Mercado Livre - Calça legging suplex plus size G1 a G4</h3>
+          <p>Boa para esteira, musculação e treino em casa. Priorize tecido firme, cintura alta e costura que não enrole.</p>
+          <a class="button button--secondary" href="https://meli.la/2XL2ybG" target="_blank" rel="sponsored noopener">Ver no Mercado Livre</a>
+        </article>
+
+        <article class="shop-card">
+          <span>Mercado Livre</span>
+          <h3>Mercado Livre - Calça legging plus size com costura reforçada</h3>
+          <p>Opção plus size para academia, caminhada e treino de força. Boa alternativa para quem procura tecido mais firme e maior segurança no movimento.</p>
+          <a class="button button--secondary" href="https://meli.la/2TcWNAf" target="_blank" rel="sponsored noopener">Ver no Mercado Livre</a>
+        </article>
+
+        <article class="shop-card">
+          <span>Mercado Livre</span>
+          <h3>Mercado Livre - Produto fitness plus size</h3>
+          <p>Item da curadoria para completar a lista de roupas e acessórios confortáveis para treino.</p>
+          <a class="button button--secondary" href="https://meli.la/2Pf3v4J" target="_blank" rel="sponsored noopener">Ver no Mercado Livre</a>
+        </article>
+
+        <article class="shop-card">
+          <span>Mercado Livre</span>
+          <h3>Mercado Livre - Produto fitness plus size</h3>
+          <p>Mais uma seleção para a vitrine de roupas e acessórios de treino.</p>
+          <a class="button button--secondary" href="https://meli.la/24WrB3o" target="_blank" rel="sponsored noopener">Ver no Mercado Livre</a>
+        </article>
+
+        <article class="shop-card">
+          <span>Mercado Livre</span>
+          <h3>Mercado Livre - Produto fitness plus size</h3>
+          <p>Produto selecionado para complementar a curadoria Move Up.</p>
+          <a class="button button--secondary" href="https://meli.la/2RCMXqs" target="_blank" rel="sponsored noopener">Ver no Mercado Livre</a>
+        </article>
+
+        <article class="shop-card">
+          <span>Mercado Livre</span>
+          <h3>Mercado Livre - Produto fitness plus size</h3>
+          <p>Mais um link afiliado selecionado para a vitrine Move Up.</p>
+          <a class="button button--secondary" href="https://meli.la/153Hfof" target="_blank" rel="sponsored noopener">Ver no Mercado Livre</a>
+        </article>
+
+        <article class="shop-card">
+          <span>Mercado Livre</span>
+          <h3>Mercado Livre - Produto fitness plus size</h3>
+          <p>Link afiliado selecionado para quem busca peças práticas de roupa ou acessório fitness.</p>
+          <a class="button button--secondary" href="https://meli.la/1nRFuBb" target="_blank" rel="sponsored noopener">Ver no Mercado Livre</a>
+        </article>
+
+        <article class="shop-card">
+          <span>Mercado Livre</span>
+          <h3>Mercado Livre - Produto fitness plus size</h3>
+          <p>Mais uma opção de link afiliado para a curadoria Move Up.</p>
+          <a class="button button--secondary" href="https://meli.la/1UwFcUK" target="_blank" rel="sponsored noopener">Ver no Mercado Livre</a>
+        </article>
+
+        <article class="shop-card">
+          <span>Mercado Livre</span>
+          <h3>Mercado Livre - Produto fitness plus size</h3>
+          <p>Link afiliado adicionado à vitrine Move Up.</p>
+          <a class="button button--secondary" href="https://meli.la/2HCHesw" target="_blank" rel="sponsored noopener">Ver no Mercado Livre</a>
+        </article>
+
+        <article class="shop-card">
+          <span>Mercado Livre</span>
+          <h3>Mercado Livre - Produto fitness plus size</h3>
+          <p>Mais um link afiliado para a curadoria de peças e acessórios úteis no treino.</p>
+          <a class="button button--secondary" href="https://meli.la/1Vnxzwi" target="_blank" rel="sponsored noopener">Ver no Mercado Livre</a>
+        </article>
+
+        <article class="shop-card">
+          <span>Shopee</span>
+          <h3>Shopee - Top fitness plus size</h3>
+          <p>Procure alças largas, sustentação confortável e tabela de medidas realista para evitar compra frustrante.</p>
+          <a class="button button--secondary" href="https://s.shopee.com.br/1VwbjMRcoo" target="_blank" rel="sponsored noopener">Ver na Shopee</a>
+        </article>
+
+        <article class="shop-card">
+          <span>Shopee</span>
+          <h3>Shopee - Tênis para caminhada</h3>
+          <p>Escolha modelos estáveis, com bom amortecimento e solado confortável para esteira sem impacto.</p>
+          <a class="button button--secondary" href="https://s.shopee.com.br/4qD3hdNOoR" target="_blank" rel="sponsored noopener">Ver na Shopee</a>
+        </article>
+
+        <article class="shop-card">
+          <span>Shopee</span>
+          <h3>Shopee - Produto fitness plus size</h3>
+          <p>Link afiliado selecionado para complementar a vitrine Move Up.</p>
+          <a class="button button--secondary" href="https://s.shopee.com.br/9zv9rajDSH" target="_blank" rel="sponsored noopener">Ver na Shopee</a>
+        </article>
+
+        <article class="shop-card shop-card--note">
+          <span>Curadoria Move Up</span>
+          <h3>Como escolher melhor</h3>
+          <p>Inclua links com tabela de medidas clara, avaliações com fotos reais e opções de troca. Isso cria confiança e conversa com quem está no processo.</p>
+          <a class="button button--ghost-dark" href="#conta">Salvar progresso</a>
+        </article>
+      </div>
+    </section>
+
+    <section id="orientacao-descanso" class="section jump-notice">
+      <div>
+        <p class="eyebrow">Timer de descanso</p>
+        <h2>Antes, complete a avaliação</h2>
+        <p>O timer continua no site, mas ele é liberado junto com o treino montado. Comece pela avaliação e depois escolha entre o treino recomendado ou personalizado.</p>
+        <a class="button button--primary" href="#avaliacao">Ir para avaliação</a>
+      </div>
+    </section>
+
+    <section id="conta" class="section account-section">
+      <div class="section__intro">
+        <p class="eyebrow">Conta protegida</p>
+        <h2>Seu painel pessoal</h2>
+        <p>Crie uma conta ou entre para salvar avaliação, treinos, check-ins, medidas corporais, dor, energia e evolução por gráficos. Cada usuário acessa somente os próprios dados.</p>
+      </div>
+
+      <div class="account-panel">
+        <div class="account-tabs" role="group" aria-label="Acesso à conta">
+          <button class="account-tab active" id="showLogin" type="button">Entrar</button>
+          <button class="account-tab" id="showRegister" type="button">Criar conta</button>
+          <button class="account-tab" id="showRecover" type="button">Recuperar senha</button>
+        </div>
+
+        <form class="account-form" id="loginForm">
+          <label>E-mail<input id="loginEmail" type="email" autocomplete="email" required /></label>
+          <label>Senha<input id="loginPassword" type="password" autocomplete="current-password" minlength="8" required /></label>
+          <button class="button button--primary" type="submit">Entrar na conta</button>
+        </form>
+
+        <form class="account-form is-hidden" id="registerForm">
+          <label>Nome<input id="registerName" type="text" autocomplete="name" required /></label>
+          <label>E-mail<input id="registerEmail" type="email" autocomplete="email" required /></label>
+          <label>Senha<input id="registerPassword" type="password" autocomplete="new-password" minlength="8" required /></label>
+          <button class="button button--primary" type="submit">Criar conta segura</button>
+        </form>
+
+        <form class="account-form is-hidden" id="recoverForm">
+          <label>E-mail cadastrado<input id="recoverEmail" type="email" autocomplete="email" required /></label>
+          <button class="button button--secondary" type="submit">Gerar recuperação</button>
+          <p class="account-help">Neste protótipo, o código não é enviado por e-mail. Se o e-mail existir na conta, o código aparecerá na tela para você redefinir a senha.</p>
+        </form>
+
+        <form class="account-form is-hidden" id="resetForm">
+          <label>Código de recuperação<input id="resetToken" type="text" autocomplete="one-time-code" required /></label>
+          <label>Nova senha<input id="resetPassword" type="password" autocomplete="new-password" minlength="8" required /></label>
+          <button class="button button--primary" type="submit">Redefinir senha</button>
+          <p class="account-help" id="resetCodeHelp"></p>
+        </form>
+
+        <div class="account-session is-hidden" id="accountSession" aria-live="polite">
+          <div>
+            <span>Conta ativa</span>
+            <strong id="accountName">Usuário</strong>
+            <small id="accountEmail">email</small>
+          </div>
+          <div class="account-actions">
+            <a class="button button--secondary" href="#progresso">Meu Progresso</a>
+            <button class="button button--ghost-dark" id="logoutButton" type="button">Sair</button>
+          </div>
+        </div>
+
+        <p class="account-message" id="accountMessage" role="status"></p>
+      </div>
+    </section>
+
+    <section id="avaliacao" class="section assessment-section requires-auth is-locked" data-lock="Entre ou crie uma conta para preencher a avaliação.">
       <div class="section__intro">
         <p class="eyebrow">Avaliação obrigatória</p>
         <h2>Dados físicos e metabólicos</h2>
@@ -107,11 +307,75 @@
       </div>
     </section>
 
-    <section id="progresso" class="section progress-section requires-assessment is-locked">
+    <section id="montagem" class="section builder-section requires-auth requires-assessment is-locked" data-lock="Entre na conta e preencha a avaliação para liberar a montagem do treino.">
       <div class="section__intro">
-        <p class="eyebrow">Progressão de peso</p>
-        <h2>Registro semanal e tendência</h2>
+        <p class="eyebrow">Escolha seu caminho</p>
+        <h2>Plano recomendado ou treino personalizado</h2>
+        <p>Use a avaliação para receber uma semana adaptada às suas limitações e ao local de treino, ou escolha o foco de cada dia.</p>
+      </div>
+
+      <div class="builder-panel">
+        <div class="mode-switch" role="group" aria-label="Modo de montagem do treino">
+          <button class="mode-button active" id="recommendedMode" type="button">Treino pela avaliação</button>
+          <button class="mode-button" id="customMode" type="button">Monte seu treino</button>
+        </div>
+
+        <div class="builder-mode" id="recommendedBuilder">
+          <h3>Recomendação automática</h3>
+          <p id="recommendationSummary">Conclua a avaliação para receber a recomendação.</p>
+          <button class="button button--primary" id="generateRecommendedPlan" type="button">Montar treino recomendado</button>
+        </div>
+
+        <form class="builder-mode is-hidden" id="customWorkoutForm">
+          <h3>Escolha o foco de cada dia</h3>
+          <div class="custom-week" id="customWeek"></div>
+
+          <section class="exercise-library" aria-label="Lista de exercícios para montar ficha">
+            <div>
+              <h3>Lista de exercícios para adicionar na ficha</h3>
+              <p>Escolha exercícios de academia ou casa e adicione ao dia desejado. Priorize baixo impacto, controle e conforto nas articulações.</p>
+            </div>
+
+            <div class="library-controls">
+              <label>Local
+                <select id="libraryPlace">
+                  <option value="all">Todos</option>
+                  <option value="academia">Academia</option>
+                  <option value="casa">Casa</option>
+                </select>
+              </label>
+              <label>Grupo
+                <select id="libraryGroup">
+                  <option value="all">Todos</option>
+                  <option value="MMII">MMII</option>
+                  <option value="MMSS">MMSS</option>
+                  <option value="Core">Core</option>
+                  <option value="Cardio">Cardio</option>
+                  <option value="Mobilidade">Mobilidade</option>
+                </select>
+              </label>
+              <label>Adicionar no dia
+                <select id="libraryDay"></select>
+              </label>
+            </div>
+
+            <div class="library-list" id="exerciseLibraryList"></div>
+            <p class="library-status" id="libraryStatus" role="status"></p>
+          </section>
+
+          <button class="button button--primary" type="submit">Salvar meu treino</button>
+        </form>
+
+        <p class="builder-status" id="builderStatus" role="status"></p>
+      </div>
+    </section>
+
+    <section id="progresso" class="section progress-section requires-auth requires-assessment is-locked" data-lock="Entre na conta e preencha a avaliação para iniciar o acompanhamento de peso.">
+      <div class="section__intro">
+        <p class="eyebrow">Meu Progresso</p>
+        <h2>Peso, medidas e check-ins</h2>
         <p>Registre o peso uma vez por semana, sempre em condições parecidas. O gráfico mostra a evolução e ajuda a ajustar treino e calorias com segurança.</p>
+        <a class="button button--secondary" href="#avaliacao">Editar dados pessoais</a>
       </div>
 
       <div class="progress-panel">
@@ -121,6 +385,13 @@
           <label>Meta de peso (kg)<input id="progressGoalWeight" type="number" min="30" max="350" step="0.1" required /></label>
           <label>Data da medição<input id="measurementDate" type="date" required /></label>
           <label>Peso atual no check-in (kg)<input id="currentMeasurementWeight" type="number" min="30" max="350" step="0.1" required /></label>
+          <label>Cintura (cm)<input id="measurementWaist" type="number" min="40" max="250" step="0.1" /></label>
+          <label>Quadril (cm)<input id="measurementHip" type="number" min="40" max="250" step="0.1" /></label>
+          <label>Braço (cm)<input id="measurementArm" type="number" min="15" max="100" step="0.1" /></label>
+          <label>Nível de dor (0 a 10)<input id="painLevel" type="number" min="0" max="10" step="1" /></label>
+          <label>Nível de energia (0 a 10)<input id="energyLevel" type="number" min="0" max="10" step="1" /></label>
+          <label>Sono (horas)<input id="sleepHours" type="number" min="0" max="16" step="0.5" /></label>
+          <label>Observações do check-in<textarea id="checkinNotes" rows="3"></textarea></label>
           <button class="button button--primary" type="submit">Registrar medição</button>
         </form>
 
@@ -128,15 +399,81 @@
           <p>Registre a primeira medição para visualizar a tendência.</p>
         </div>
 
+        <section id="alimentacao" class="nutrition-panel" aria-label="Registro de alimentação e calorias">
+          <div>
+            <h3>Alimentação e calorias ingeridas</h3>
+            <p>Registre calorias, proteína, água e observações do dia. Use como acompanhamento simples da constância alimentar, sem dietas extremas.</p>
+          </div>
+
+          <form class="nutrition-form" id="nutritionForm">
+            <label>Data<input id="nutritionDate" type="date" required /></label>
+            <label>Calorias ingeridas (kcal)<input id="nutritionCalories" type="number" min="0" max="8000" step="1" required /></label>
+            <label>Proteína (g)<input id="nutritionProtein" type="number" min="0" max="400" step="1" /></label>
+            <label>Água (litros)<input id="nutritionWater" type="number" min="0" max="10" step="0.1" /></label>
+            <label>Fome no dia (0 a 10)<input id="nutritionHunger" type="number" min="0" max="10" step="1" /></label>
+            <label>Observações<textarea id="nutritionNotes" rows="3" placeholder="Ex.: muita fome à noite, almoço fora, belisquei doces, bati proteína."></textarea></label>
+            <button class="button button--primary" type="submit">Salvar alimentação</button>
+          </form>
+
+          <div class="nutrition-results" id="nutritionResults" aria-live="polite">
+            <p>Salve o primeiro registro alimentar para comparar com sua faixa calórica.</p>
+          </div>
+
+          <div class="nutrition-history" id="nutritionHistory"></div>
+        </section>
+
         <div class="chart-wrap">
           <svg id="weightChart" viewBox="0 0 640 260" role="img" aria-label="Gráfico de peso ao longo do tempo"></svg>
         </div>
 
+        <section class="photo-progress" aria-label="Fotos de evolução antes e depois">
+          <div>
+            <h3>Fotos de antes e depois</h3>
+            <p>Anexe fotos para acompanhar mudanças visuais. Use imagens com roupa confortável, mesma postura e boa iluminação. As fotos ficam salvas apenas na conta local deste app.</p>
+          </div>
+
+          <div class="photo-grid">
+            <article class="photo-card">
+              <div class="photo-preview" id="beforePhotoPreview">Antes</div>
+              <label>Foto do antes<input id="beforePhotoInput" type="file" accept="image/*" /></label>
+              <label>Data<input id="beforePhotoDate" type="date" /></label>
+              <label>Observação<textarea id="beforePhotoNote" rows="2"></textarea></label>
+              <div class="photo-actions">
+                <button class="button button--secondary" id="saveBeforePhoto" type="button">Salvar antes</button>
+                <button class="button button--ghost-dark" id="removeBeforePhoto" type="button">Remover</button>
+              </div>
+            </article>
+
+            <article class="photo-card">
+              <div class="photo-preview" id="afterPhotoPreview">Depois</div>
+              <label>Foto do depois<input id="afterPhotoInput" type="file" accept="image/*" /></label>
+              <label>Data<input id="afterPhotoDate" type="date" /></label>
+              <label>Observação<textarea id="afterPhotoNote" rows="2"></textarea></label>
+              <div class="photo-actions">
+                <button class="button button--secondary" id="saveAfterPhoto" type="button">Salvar depois</button>
+                <button class="button button--ghost-dark" id="removeAfterPhoto" type="button">Remover</button>
+              </div>
+            </article>
+          </div>
+          <p class="photo-message" id="photoMessage" role="status"></p>
+        </section>
+
         <div class="measurement-list" id="measurementList"></div>
+
+        <div class="progress-log-grid">
+          <article class="mini-log">
+            <h3>Treinos concluídos</h3>
+            <div id="completedWorkoutList"></div>
+          </article>
+          <article class="mini-log">
+            <h3>Histórico de check-ins</h3>
+            <div id="checkinHistoryList"></div>
+          </article>
+        </div>
       </div>
     </section>
 
-    <section id="treino" class="section split requires-assessment is-locked">
+    <section id="treino" class="section split requires-auth requires-plan is-locked" data-lock="Escolha um treino recomendado ou personalizado para liberar este plano.">
       <div class="section__intro">
         <p class="eyebrow">Semana completa</p>
         <h2>Alternando membros, cardio e recuperação</h2>
@@ -147,7 +484,7 @@
       <div class="exercise-list" id="exerciseList" aria-live="polite"></div>
     </section>
 
-    <section class="section protocol-section requires-assessment is-locked">
+    <section class="section protocol-section requires-auth requires-plan is-locked" data-lock="Monte o treino para liberar o protocolo de esteira.">
       <div>
         <p class="eyebrow">Esteira 25 minutos</p>
         <h2>Protocolo de baixo impacto</h2>
@@ -163,7 +500,7 @@
       </div>
     </section>
 
-    <section class="section safety-section requires-assessment is-locked">
+    <section class="section safety-section requires-auth requires-plan is-locked" data-lock="Monte o treino para liberar o checklist completo.">
       <div>
         <p class="eyebrow">Segurança primeiro</p>
         <h2>Checklist e sinais de excesso</h2>
@@ -176,7 +513,7 @@
       </div>
     </section>
 
-    <section id="descanso" class="section timer-section requires-assessment is-locked">
+    <section id="timer-descanso" class="section timer-section requires-auth requires-plan is-locked" data-lock="Monte o treino para liberar o timer de descanso.">
       <div class="timer-copy">
         <p class="eyebrow">Recuperação tática</p>
         <h2>Tempo de descanso</h2>
@@ -207,7 +544,7 @@
       </div>
     </section>
 
-    <section id="historico" class="section history-section">
+    <section id="historico" class="section history-section requires-auth requires-plan is-locked" data-lock="Monte o treino para liberar o histórico e check-in.">
       <div>
         <p class="eyebrow">Presença</p>
         <h2>Check-in do treino</h2>
@@ -221,7 +558,7 @@
   </main>
 
   <footer>
-    <p>Fit Check - plano semanal seguro, baixo impacto, emagrecimento e constância.</p>
+    <p>Move Up - plano semanal seguro, baixo impacto, emagrecimento e constância.</p>
   </footer>
 
   <script src="script.js"></script>
