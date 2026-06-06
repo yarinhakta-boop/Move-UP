@@ -1,4 +1,4 @@
-const recommendedBasePlan = [
+const exercises = [
   {
     id: "segunda",
     name: "Segunda - MMII + esteira",
@@ -97,25 +97,11 @@ const recommendedBasePlan = [
   }
 ];
 
-const weekDays = [
-  { id: "segunda", label: "Segunda", defaultFocus: "lowerA" },
-  { id: "terca", label: "Terça", defaultFocus: "upperA" },
-  { id: "quarta", label: "Quarta", defaultFocus: "active" },
-  { id: "quinta", label: "Quinta", defaultFocus: "lowerB" },
-  { id: "sexta", label: "Sexta", defaultFocus: "upperB" },
-  { id: "sabado", label: "Sábado", defaultFocus: "functional" },
-  { id: "domingo", label: "Domingo", defaultFocus: "rest" }
-];
-
-const focusLabels = {
-  lowerA: "MMII: quadríceps e glúteos",
-  lowerB: "MMII: posterior e estabilidade",
-  upperA: "MMSS: costas, ombros e tríceps",
-  upperB: "MMSS: peito, costas e bíceps",
-  cardio: "Cardio de baixo impacto",
-  active: "Descanso ativo",
-  functional: "Funcional adaptado",
-  rest: "Descanso completo"
+const storageKeys = {
+  completed: "fitcheck.completed",
+  checkins: "fitcheck.checkins",
+  assessment: "fitcheck.assessment",
+  progress: "fitcheck.progress"
 };
 
 const exerciseList = document.querySelector("#exerciseList");
@@ -136,201 +122,43 @@ const timerMessage = document.querySelector("#timerMessage");
 const quickTimeButtons = document.querySelectorAll("[data-seconds]");
 const assessmentForm = document.querySelector("#assessmentForm");
 const assessmentResults = document.querySelector("#assessmentResults");
-const authGatedSections = document.querySelectorAll(".requires-auth");
-const assessmentGatedSections = document.querySelectorAll(".requires-assessment");
-const planGatedSections = document.querySelectorAll(".requires-plan");
-const allGatedSections = [...new Set([...authGatedSections, ...assessmentGatedSections, ...planGatedSections])];
+const gatedSections = document.querySelectorAll(".requires-assessment");
 const progressForm = document.querySelector("#progressForm");
 const progressResults = document.querySelector("#progressResults");
 const weightChart = document.querySelector("#weightChart");
 const measurementList = document.querySelector("#measurementList");
-const completedWorkoutList = document.querySelector("#completedWorkoutList");
-const checkinHistoryList = document.querySelector("#checkinHistoryList");
-const beforePhotoPreview = document.querySelector("#beforePhotoPreview");
-const afterPhotoPreview = document.querySelector("#afterPhotoPreview");
-const beforePhotoInput = document.querySelector("#beforePhotoInput");
-const afterPhotoInput = document.querySelector("#afterPhotoInput");
-const beforePhotoDate = document.querySelector("#beforePhotoDate");
-const afterPhotoDate = document.querySelector("#afterPhotoDate");
-const beforePhotoNote = document.querySelector("#beforePhotoNote");
-const afterPhotoNote = document.querySelector("#afterPhotoNote");
-const saveBeforePhoto = document.querySelector("#saveBeforePhoto");
-const saveAfterPhoto = document.querySelector("#saveAfterPhoto");
-const removeBeforePhoto = document.querySelector("#removeBeforePhoto");
-const removeAfterPhoto = document.querySelector("#removeAfterPhoto");
-const photoMessage = document.querySelector("#photoMessage");
-const recommendedMode = document.querySelector("#recommendedMode");
-const customMode = document.querySelector("#customMode");
-const recommendedBuilder = document.querySelector("#recommendedBuilder");
-const customWorkoutForm = document.querySelector("#customWorkoutForm");
-const customWeek = document.querySelector("#customWeek");
-const recommendationSummary = document.querySelector("#recommendationSummary");
-const generateRecommendedPlan = document.querySelector("#generateRecommendedPlan");
-const builderStatus = document.querySelector("#builderStatus");
-const accountTabs = document.querySelector(".account-tabs");
-const showLogin = document.querySelector("#showLogin");
-const showRegister = document.querySelector("#showRegister");
-const showRecover = document.querySelector("#showRecover");
-const loginForm = document.querySelector("#loginForm");
-const registerForm = document.querySelector("#registerForm");
-const recoverForm = document.querySelector("#recoverForm");
-const resetForm = document.querySelector("#resetForm");
-const accountSession = document.querySelector("#accountSession");
-const accountName = document.querySelector("#accountName");
-const accountEmail = document.querySelector("#accountEmail");
-const accountMessage = document.querySelector("#accountMessage");
-const logoutButton = document.querySelector("#logoutButton");
 
-let currentUser = null;
-let completed = [];
-let checkins = [];
-let assessment = null;
-let progress = createEmptyProgress();
-let progressPhotos = createEmptyPhotos();
-let workoutPlan = null;
-let exercises = recommendedBasePlan;
+let completed = loadArray(storageKeys.completed);
+let checkins = loadArray(storageKeys.checkins);
+let assessment = loadObject(storageKeys.assessment);
+let progress = loadObject(storageKeys.progress) || { startDate: "", initialWeight: null, goalWeight: null, measurements: [] };
 let totalSeconds = 60;
 let remainingSeconds = 60;
 let timerId = null;
-let activeAccountMode = "login";
 
-function createEmptyProgress() {
-  return {
-    startDate: "",
-    initialWeight: null,
-    goalWeight: null,
-    measurements: []
-  };
-}
-
-function createEmptyPhotos() {
-  return {
-    before: null,
-    after: null
-  };
-}
-
-function cloneData(value) {
-  return JSON.parse(JSON.stringify(value));
-}
-
-function escapeHtml(value) {
-  const map = {
-    "&": "&amp;",
-    "<": "&lt;",
-    ">": "&gt;",
-    "\"": "&quot;",
-    "'": "&#039;"
-  };
-
-  return String(value ?? "").replace(/[&<>"']/g, (char) => map[char]);
-}
-
-async function api(path, options = {}) {
-  const headers = options.body ? { "Content-Type": "application/json" } : {};
-  const response = await fetch(path, {
-    method: options.method || "GET",
-    credentials: "same-origin",
-    headers,
-    body: options.body ? JSON.stringify(options.body) : undefined
-  });
-  const text = await response.text();
-  const payload = text ? JSON.parse(text) : {};
-
-  if (!response.ok) {
-    throw new Error(payload.message || "Não foi possível concluir a ação.");
-  }
-
-  return payload;
-}
-
-function getStatePayload() {
-  return {
-    completed,
-    checkins,
-    assessment,
-    progress,
-    progressPhotos,
-    workoutPlan
-  };
-}
-
-async function saveState() {
-  if (!currentUser) return;
-
+function loadArray(key) {
   try {
-    await api("/api/data", {
-      method: "PUT",
-      body: getStatePayload()
-    });
-  } catch (error) {
-    setAccountMessage(`Não foi possível salvar agora: ${error.message}`, true);
+    return JSON.parse(localStorage.getItem(key)) || [];
+  } catch {
+    return [];
   }
 }
 
-function normalizeProgress(input) {
-  const source = input && typeof input === "object" ? input : {};
-  const measurements = Array.isArray(source.measurements) ? source.measurements : [];
-
-  return {
-    startDate: source.startDate || "",
-    initialWeight: source.initialWeight ? Number(source.initialWeight) : null,
-    goalWeight: source.goalWeight ? Number(source.goalWeight) : null,
-    measurements: measurements
-      .filter((item) => item?.date && Number(item.weight))
-      .map((item) => ({
-        date: item.date,
-        weight: Number(item.weight),
-        waist: item.waist === null || item.waist === undefined ? null : Number(item.waist),
-        hip: item.hip === null || item.hip === undefined ? null : Number(item.hip),
-        arm: item.arm === null || item.arm === undefined ? null : Number(item.arm),
-        pain: item.pain === null || item.pain === undefined ? null : Number(item.pain),
-        energy: item.energy === null || item.energy === undefined ? null : Number(item.energy),
-        sleep: item.sleep === null || item.sleep === undefined ? null : Number(item.sleep),
-        notes: String(item.notes || "")
-      }))
-  };
+function loadObject(key) {
+  try {
+    return JSON.parse(localStorage.getItem(key)) || null;
+  } catch {
+    return null;
+  }
 }
 
-function normalizePhotos(input) {
-  const source = input && typeof input === "object" ? input : {};
-  const normalizePhoto = (photo) => {
-    if (!photo?.dataUrl) return null;
-    return {
-      dataUrl: String(photo.dataUrl),
-      date: photo.date || "",
-      note: String(photo.note || "")
-    };
-  };
-
-  return {
-    before: normalizePhoto(source.before),
-    after: normalizePhoto(source.after)
-  };
-}
-
-function hydrateState(data = {}) {
-  const source = data && typeof data === "object" ? data : {};
-  completed = Array.isArray(source.completed) ? source.completed : [];
-  checkins = Array.isArray(source.checkins) ? source.checkins : [];
-  assessment = source.assessment || null;
-  progress = normalizeProgress(source.progress);
-  progressPhotos = normalizePhotos(source.progressPhotos);
-  workoutPlan = source.workoutPlan?.exercises?.length ? source.workoutPlan : null;
-  exercises = workoutPlan?.exercises?.length ? workoutPlan.exercises : recommendedBasePlan;
-}
-
-function resetPrivateState() {
-  completed = [];
-  checkins = [];
-  assessment = null;
-  progress = createEmptyProgress();
-  progressPhotos = createEmptyPhotos();
-  workoutPlan = null;
-  exercises = recommendedBasePlan;
-  assessmentForm.reset();
-  progressForm.reset();
-  document.querySelector("#measurementDate").value = getTodayInputValue();
+function saveState() {
+  localStorage.setItem(storageKeys.completed, JSON.stringify(completed));
+  localStorage.setItem(storageKeys.checkins, JSON.stringify(checkins));
+  if (assessment) {
+    localStorage.setItem(storageKeys.assessment, JSON.stringify(assessment));
+  }
+  localStorage.setItem(storageKeys.progress, JSON.stringify(progress));
 }
 
 function round(value) {
@@ -391,66 +219,12 @@ function calculateAssessment(data) {
   };
 }
 
-function hasActivePlan() {
-  return Boolean(workoutPlan?.exercises?.length);
-}
-
-function getLockReason(section) {
-  if (section.classList.contains("requires-auth") && !currentUser) {
-    return "Entre ou crie uma conta para acessar seu painel pessoal.";
-  }
-
-  if (section.classList.contains("requires-assessment") && !assessment) {
-    return "Preencha a avaliação para liberar esta área.";
-  }
-
-  if (section.classList.contains("requires-plan") && !hasActivePlan()) {
-    return assessment
-      ? "Escolha um treino recomendado ou personalizado para liberar esta área."
-      : "Preencha a avaliação e monte seu treino para liberar esta área.";
-  }
-
-  return "";
-}
-
-function updateLocks() {
-  allGatedSections.forEach((section) => {
-    const reason = getLockReason(section);
-    section.classList.toggle("is-locked", Boolean(reason));
-    if (reason) section.dataset.lock = reason;
-  });
-}
-
-function redirectLockedHash() {
-  if (!window.location.hash) return;
-
-  if (window.location.hash === "#descanso") {
-    const fallback = currentUser ? "#avaliacao" : "#conta";
-    history.replaceState(null, "", fallback);
-    document.querySelector(fallback)?.scrollIntoView({ block: "start" });
-    return;
-  }
-
-  const id = decodeURIComponent(window.location.hash.slice(1));
-  const target = document.getElementById(id);
-  if (!target?.classList.contains("is-locked")) return;
-
-  let fallback = "#conta";
-  if (currentUser && target.classList.contains("requires-assessment") && !assessment) {
-    fallback = "#avaliacao";
-  } else if (currentUser && target.classList.contains("requires-plan")) {
-    fallback = assessment ? "#montagem" : "#avaliacao";
-  }
-
-  history.replaceState(null, "", fallback);
-  document.querySelector(fallback)?.scrollIntoView({ block: "start" });
+function unlockPlan() {
+  gatedSections.forEach((section) => section.classList.remove("is-locked"));
 }
 
 function renderAssessmentResults(result) {
-  if (!result) {
-    assessmentResults.innerHTML = `<p>O resultado aparecerá aqui após o preenchimento.</p>`;
-    return;
-  }
+  if (!result) return;
 
   const waistText = result.waist
     ? `<small>Cintura informada: ${formatNumber(result.waist, 1)} cm.</small>`
@@ -459,7 +233,7 @@ function renderAssessmentResults(result) {
     ? `${formatNumber(result.targetLoss, 1)} kg em aproximadamente ${result.weeksFast}-${result.weeksSlow} semanas`
     : "Meta igual ou acima do peso atual";
   const limitationsText = result.limitations.length
-    ? result.limitations.map(escapeHtml).join(", ")
+    ? result.limitations.join(", ")
     : "Nenhuma limitação marcada";
   const needsClearance = result.limitations.some((item) =>
     /cardíacos|hérnia|dor no joelho|dor na lombar|dor no quadril/i.test(item)
@@ -477,20 +251,12 @@ function renderAssessmentResults(result) {
       <article class="result-card"><span>Perda saudável</span><strong>${formatNumber(result.weeklyLossLow, 1)}-${formatNumber(result.weeklyLossHigh, 1)} kg/sem</strong><small>Estimativa gradual e ajustável.</small></article>
       <article class="result-card"><span>Meta estimada</span><strong>${goalText}</strong>${waistText}</article>
     </div>
-    <p class="result-note">Plano liberado para ${escapeHtml(result.name)}. Academia: ${escapeHtml(result.hasGym)}. Limitações: ${limitationsText}.${clearanceText}</p>
+    <p class="result-note">Plano liberado para ${result.name}. Academia: ${result.hasGym}. Limitações: ${limitationsText}.${clearanceText}</p>
   `;
 }
 
 function fillAssessmentForm(result) {
   if (!result) return;
-
-  const knownLimitations = new Set([
-    "Dor no joelho",
-    "Dor na lombar",
-    "Dor no quadril",
-    "Hérnia de disco",
-    "Problemas cardíacos"
-  ]);
 
   document.querySelector("#personName").value = result.name;
   document.querySelector("#age").value = result.age;
@@ -501,156 +267,6 @@ function fillAssessmentForm(result) {
   document.querySelector("#goalWeight").value = result.goalWeight;
   document.querySelector("#activityLevel").value = result.activityFactor;
   document.querySelector("#hasGym").value = result.hasGym;
-  document.querySelectorAll('input[name="limitations"]').forEach((input) => {
-    input.checked = result.limitations.includes(input.value);
-  });
-  document.querySelector("#otherLimitations").value = result.limitations
-    .filter((item) => !knownLimitations.has(item))
-    .join(", ");
-}
-
-function getPlanTemplate(focus) {
-  const templates = {
-    lowerA: recommendedBasePlan[0],
-    upperA: recommendedBasePlan[1],
-    active: recommendedBasePlan[2],
-    lowerB: recommendedBasePlan[3],
-    upperB: recommendedBasePlan[4],
-    functional: recommendedBasePlan[5],
-    rest: recommendedBasePlan[6]
-  };
-
-  if (focus === "cardio") {
-    return {
-      id: "cardio",
-      name: "Cardio de baixo impacto",
-      detail: "Caminhada confortável e mobilidade, sem corrida ou saltos.",
-      tag: "30 min",
-      minutes: 30,
-      cardio: "Use o protocolo de esteira de 25 minutos ou caminhe em local plano.",
-      items: [
-        ["Caminhada progressiva", "20-25 min", "Conforme necessário", "Marcha sentada ou caminhada em casa", "Mantenha postura ereta e reduza o ritmo se houver dor."],
-        ["Mobilidade leve", "5-8 min", "Livre", "Movimentos sentados", "Sem forçar joelhos, quadril ou lombar."]
-      ]
-    };
-  }
-
-  return templates[focus] || templates.rest;
-}
-
-function adaptPlanToAssessment(plan, result) {
-  const adapted = cloneData(plan);
-  const limitations = new Set(result?.limitations || []);
-  const trainsAtHome = result?.hasGym === "Não";
-  const hasJointPain = ["Dor no joelho", "Dor na lombar", "Dor no quadril", "Hérnia de disco"]
-    .some((item) => limitations.has(item));
-  const hasCardiacRisk = limitations.has("Problemas cardíacos");
-
-  adapted.forEach((day) => {
-    if (trainsAtHome) {
-      day.detail = `${day.detail} Versão adaptada para treino em casa.`;
-      day.items = day.items.map((item) => [
-        item[3],
-        item[1],
-        item[2],
-        "Use apoio estável e objetos leves disponíveis",
-        item[4]
-      ]);
-      day.cardio = day.cardio
-        .replace(/Esteira[^.]*\./i, "Caminhada leve em local plano ou marcha sentada.")
-        .replace(/esteira/gi, "caminhada");
-    }
-
-    if (hasJointPain) {
-      day.items = day.items.map((item) => {
-        const safety = `${item[4]} Use amplitude curta e interrompa se a dor aumentar.`;
-        return [item[0], item[1], item[2], item[3], safety];
-      });
-      day.cardio = `${day.cardio} Comece sem inclinação e aumente apenas se estiver sem dor.`;
-    }
-
-    if (hasCardiacRisk && day.minutes > 0) {
-      day.cardio = "Cardio somente após liberação médica, em intensidade leve e com supervisão.";
-      day.detail = `${day.detail} Evite esforço intenso até receber liberação médica.`;
-    }
-  });
-
-  return adapted;
-}
-
-function buildRecommendedPlan(result) {
-  return adaptPlanToAssessment(recommendedBasePlan, result);
-}
-
-function buildCustomPlan(result) {
-  const focusMap = {};
-  const plan = weekDays.map((day) => {
-    const select = document.querySelector(`#focus-${day.id}`);
-    const focus = select.value;
-    focusMap[day.id] = focus;
-
-    const template = cloneData(getPlanTemplate(focus));
-    template.id = day.id;
-    template.name = `${day.label} - ${focusLabels[focus]}`;
-    return template;
-  });
-
-  return {
-    focusMap,
-    exercises: adaptPlanToAssessment(plan, result)
-  };
-}
-
-function renderCustomWeek(focusMap = {}) {
-  customWeek.innerHTML = weekDays.map((day) => {
-    const selected = focusMap[day.id] || day.defaultFocus;
-    const options = Object.entries(focusLabels)
-      .map(([value, label]) => `<option value="${value}" ${value === selected ? "selected" : ""}>${label}</option>`)
-      .join("");
-
-    return `
-      <div class="custom-day">
-        <label for="focus-${day.id}">${day.label}</label>
-        <select id="focus-${day.id}">${options}</select>
-      </div>
-    `;
-  }).join("");
-}
-
-function renderRecommendationSummary(result) {
-  if (!result) {
-    recommendationSummary.textContent = "Conclua a avaliação para receber a recomendação.";
-    return;
-  }
-
-  const location = result.hasGym === "Sim" ? "academia" : "casa";
-  const limitations = result.limitations.length
-    ? ` com adaptações para ${result.limitations.join(", ")}`
-    : " sem limitações físicas marcadas";
-
-  recommendationSummary.textContent =
-    `Semana alternando MMII, MMSS, cardio e recuperação para treino em ${location}${limitations}.`;
-}
-
-function setBuilderMode(mode) {
-  const custom = mode === "custom";
-  recommendedMode.classList.toggle("active", !custom);
-  customMode.classList.toggle("active", custom);
-  recommendedBuilder.classList.toggle("is-hidden", custom);
-  customWorkoutForm.classList.toggle("is-hidden", !custom);
-  builderStatus.textContent = "";
-}
-
-async function activateWorkoutPlan(mode, plan, focusMap = null) {
-  exercises = plan;
-  workoutPlan = { mode, exercises: plan, focusMap };
-  completed = completed.filter((id) => exercises.some((exercise) => exercise.id === id));
-  await saveState();
-  renderInterface();
-  builderStatus.textContent = mode === "custom"
-    ? "Treino personalizado salvo."
-    : "Treino recomendado pela avaliação montado.";
-  document.querySelector("#treino").scrollIntoView({ behavior: "smooth", block: "start" });
 }
 
 function syncProgressFromAssessment(result) {
@@ -659,17 +275,6 @@ function syncProgressFromAssessment(result) {
   if (!progress.initialWeight) progress.initialWeight = result.weight;
   if (!progress.goalWeight) progress.goalWeight = result.goalWeight;
   if (!progress.startDate) progress.startDate = getTodayInputValue();
-  if (!progress.measurements.length) {
-    progress.measurements = [{
-      date: progress.startDate,
-      weight: result.weight,
-      waist: result.waist || null,
-      hip: null,
-      arm: null,
-      pain: null,
-      energy: null
-    }];
-  }
 
   document.querySelector("#programStartDate").value = progress.startDate;
   document.querySelector("#initialWeight").value = progress.initialWeight || result.weight;
@@ -678,22 +283,6 @@ function syncProgressFromAssessment(result) {
   document.querySelector("#currentMeasurementWeight").value = progress.measurements.length
     ? sortMeasurements(progress.measurements).at(-1).weight
     : result.weight;
-}
-
-function prepareEmptyProgressForm() {
-  document.querySelector("#programStartDate").value = "";
-  document.querySelector("#initialWeight").value = "";
-  document.querySelector("#progressGoalWeight").value = "";
-  document.querySelector("#measurementDate").value = getTodayInputValue();
-  document.querySelector("#currentMeasurementWeight").value = "";
-  clearMeasurementExtras();
-}
-
-function clearMeasurementExtras() {
-  ["#measurementWaist", "#measurementHip", "#measurementArm", "#painLevel", "#energyLevel", "#sleepHours", "#checkinNotes"]
-    .forEach((selector) => {
-      document.querySelector(selector).value = "";
-    });
 }
 
 function sortMeasurements(measurements) {
@@ -812,152 +401,8 @@ function renderProgress() {
   }
 
   measurementList.innerHTML = measurements.length
-    ? measurements.map((item) => {
-      const details = [
-        item.waist ? `Cintura ${formatNumber(item.waist, 1)} cm` : null,
-        item.hip ? `Quadril ${formatNumber(item.hip, 1)} cm` : null,
-        item.arm ? `Braço ${formatNumber(item.arm, 1)} cm` : null,
-        item.pain !== null && item.pain !== undefined ? `Dor ${item.pain}/10` : null,
-        item.energy !== null && item.energy !== undefined ? `Energia ${item.energy}/10` : null,
-        item.sleep !== null && item.sleep !== undefined ? `Sono ${formatNumber(item.sleep, 1)} h` : null,
-        item.notes ? `Obs.: ${escapeHtml(item.notes)}` : null
-      ].filter(Boolean).join(" | ");
-
-      return `
-        <div class="measurement-item">
-          <div>
-            <span>${formatDate(item.date)}</span>
-            <small>${details || "Sem medidas extras registradas."}</small>
-          </div>
-          <span>${formatNumber(item.weight, 1)} kg</span>
-        </div>
-      `;
-    }).join("")
+    ? measurements.map((item) => `<div class="measurement-item"><span>${formatDate(item.date)}</span><span>${formatNumber(item.weight, 1)} kg</span></div>`).join("")
     : `<div class="measurement-item"><span>Nenhuma medição</span><span>Comece hoje</span></div>`;
-}
-
-function renderPhotoSlot(type) {
-  const photo = progressPhotos[type];
-  const preview = type === "before" ? beforePhotoPreview : afterPhotoPreview;
-  const dateInput = type === "before" ? beforePhotoDate : afterPhotoDate;
-  const noteInput = type === "before" ? beforePhotoNote : afterPhotoNote;
-  const label = type === "before" ? "Antes" : "Depois";
-
-  if (!photo) {
-    preview.textContent = label;
-    dateInput.value = "";
-    noteInput.value = "";
-    return;
-  }
-
-  preview.innerHTML = `<img src="${photo.dataUrl}" alt="Foto do ${label.toLowerCase()}">`;
-  dateInput.value = photo.date || "";
-  noteInput.value = photo.note || "";
-}
-
-function renderPhotos() {
-  renderPhotoSlot("before");
-  renderPhotoSlot("after");
-}
-
-function readFileAsDataUrl(file) {
-  return new Promise((resolve, reject) => {
-    const reader = new FileReader();
-    reader.onload = () => resolve(reader.result);
-    reader.onerror = () => reject(new Error("Não foi possível ler a imagem."));
-    reader.readAsDataURL(file);
-  });
-}
-
-function loadImage(dataUrl) {
-  return new Promise((resolve, reject) => {
-    const image = new Image();
-    image.onload = () => resolve(image);
-    image.onerror = () => reject(new Error("Não foi possível carregar a imagem."));
-    image.src = dataUrl;
-  });
-}
-
-async function compressPhoto(file) {
-  if (!file) return null;
-  if (!file.type.startsWith("image/")) {
-    throw new Error("Escolha um arquivo de imagem.");
-  }
-
-  const dataUrl = await readFileAsDataUrl(file);
-  const image = await loadImage(dataUrl);
-  const maxSize = 900;
-  const scale = Math.min(1, maxSize / Math.max(image.width, image.height));
-  const width = Math.max(1, Math.round(image.width * scale));
-  const height = Math.max(1, Math.round(image.height * scale));
-  const canvas = document.createElement("canvas");
-  canvas.width = width;
-  canvas.height = height;
-  const context = canvas.getContext("2d");
-  context.drawImage(image, 0, 0, width, height);
-  return canvas.toDataURL("image/jpeg", 0.72);
-}
-
-async function savePhoto(type) {
-  if (!currentUser || !assessment) return;
-
-  const input = type === "before" ? beforePhotoInput : afterPhotoInput;
-  const dateInput = type === "before" ? beforePhotoDate : afterPhotoDate;
-  const noteInput = type === "before" ? beforePhotoNote : afterPhotoNote;
-  const existing = progressPhotos[type];
-  const file = input.files[0] || null;
-
-  try {
-    photoMessage.textContent = "Salvando foto...";
-    const dataUrl = file ? await compressPhoto(file) : existing?.dataUrl;
-    if (!dataUrl) {
-      photoMessage.textContent = "Escolha uma foto antes de salvar.";
-      return;
-    }
-
-    progressPhotos[type] = {
-      dataUrl,
-      date: dateInput.value || getTodayInputValue(),
-      note: noteInput.value.trim()
-    };
-    input.value = "";
-    await saveState();
-    renderPhotos();
-    photoMessage.textContent = type === "before" ? "Foto do antes salva." : "Foto do depois salva.";
-  } catch (error) {
-    photoMessage.textContent = error.message;
-  }
-}
-
-async function removePhoto(type) {
-  if (!currentUser || !assessment) return;
-
-  progressPhotos[type] = null;
-  await saveState();
-  renderPhotos();
-  photoMessage.textContent = type === "before" ? "Foto do antes removida." : "Foto do depois removida.";
-}
-
-function renderProgressLogs() {
-  const doneWorkouts = exercises.filter((exercise) => completed.includes(exercise.id));
-  completedWorkoutList.innerHTML = doneWorkouts.length
-    ? doneWorkouts.map((exercise) => `
-      <div class="mini-log-item">
-        <strong>${exercise.name}</strong>
-        <span>${exercise.tag}</span>
-      </div>
-    `).join("")
-    : `<p>Nenhum treino concluído ainda.</p>`;
-
-  const latestCheckins = [...checkins].sort().reverse().slice(0, 6);
-  checkinHistoryList.innerHTML = latestCheckins.length
-    ? latestCheckins.map((dateKey) => `
-      <div class="mini-log-item">
-        <strong>${formatDate(dateKey)}</strong>
-        <span>check-in salvo</span>
-      </div>
-    `).join("")
-    : `<p>Nenhum check-in semanal salvo.</p>`;
 }
 
 function getTodayKey() {
@@ -1029,14 +474,12 @@ function renderExercises() {
   });
 }
 
-async function toggleExercise(id) {
-  if (!currentUser || !hasActivePlan()) return;
-
+function toggleExercise(id) {
   completed = completed.includes(id)
     ? completed.filter((item) => item !== id)
     : [...completed, id];
 
-  await saveState();
+  saveState();
   renderAll();
 }
 
@@ -1049,8 +492,7 @@ function renderSummary() {
   streakCount.textContent = checkins.length.toString();
   todayStatus.textContent = checkins.includes(getTodayKey()) ? "Feito" : "Pendente";
   checkinButton.textContent = checkins.includes(getTodayKey()) ? "Missão cumprida hoje" : "Check-in da missão";
-  checkinButton.disabled = !currentUser || !hasActivePlan() || checkins.includes(getTodayKey());
-  resetWorkout.disabled = !currentUser || !hasActivePlan();
+  checkinButton.disabled = checkins.includes(getTodayKey());
 }
 
 function renderHistory() {
@@ -1073,36 +515,6 @@ function renderAll() {
   renderExercises();
   renderSummary();
   renderHistory();
-  renderProgressLogs();
-}
-
-function renderInterface() {
-  renderAccountUi();
-  renderCustomWeek(workoutPlan?.focusMap || {});
-  renderRecommendationSummary(assessment);
-
-  if (assessment) {
-    fillAssessmentForm(assessment);
-    renderAssessmentResults(assessment);
-    syncProgressFromAssessment(assessment);
-  } else {
-    assessmentResults.innerHTML = `<p>O resultado aparecerá aqui após o preenchimento.</p>`;
-    prepareEmptyProgressForm();
-  }
-
-  if (workoutPlan?.exercises?.length) {
-    exercises = workoutPlan.exercises;
-    setBuilderMode(workoutPlan.mode || "recommended");
-  } else {
-    exercises = recommendedBasePlan;
-    setBuilderMode("recommended");
-  }
-
-  renderProgress();
-  renderPhotos();
-  renderAll();
-  updateLocks();
-  redirectLockedHash();
 }
 
 function setTimer(seconds) {
@@ -1142,84 +554,6 @@ function pauseCountdown() {
   timerId = null;
 }
 
-function numberOrNull(selector) {
-  const value = document.querySelector(selector).value;
-  return value === "" ? null : Number(value);
-}
-
-function setAccountMessage(message, warning = false) {
-  accountMessage.textContent = message || "";
-  accountMessage.classList.toggle("warning", warning);
-}
-
-function setAccountMode(mode) {
-  activeAccountMode = mode;
-  const tabMode = mode === "reset" ? "recover" : mode;
-  showLogin.classList.toggle("active", tabMode === "login");
-  showRegister.classList.toggle("active", tabMode === "register");
-  showRecover.classList.toggle("active", tabMode === "recover");
-  loginForm.classList.toggle("is-hidden", mode !== "login");
-  registerForm.classList.toggle("is-hidden", mode !== "register");
-  recoverForm.classList.toggle("is-hidden", mode !== "recover");
-  resetForm.classList.toggle("is-hidden", mode !== "reset");
-}
-
-function renderAccountUi() {
-  if (currentUser) {
-    accountTabs.classList.add("is-hidden");
-    loginForm.classList.add("is-hidden");
-    registerForm.classList.add("is-hidden");
-    recoverForm.classList.add("is-hidden");
-    resetForm.classList.add("is-hidden");
-    accountSession.classList.remove("is-hidden");
-    accountName.textContent = currentUser.name;
-    accountEmail.textContent = currentUser.email;
-    return;
-  }
-
-  accountTabs.classList.remove("is-hidden");
-  accountSession.classList.add("is-hidden");
-  setAccountMode(activeAccountMode);
-}
-
-async function loadUserData() {
-  const response = await api("/api/data");
-  hydrateState(response.data || {});
-}
-
-async function enterSession(user, message) {
-  currentUser = user;
-  setAccountMessage("Carregando seus dados...");
-  await loadUserData();
-  renderInterface();
-  setAccountMessage(message);
-  document.querySelector(assessment ? "#progresso" : "#avaliacao")?.scrollIntoView({ behavior: "smooth", block: "start" });
-}
-
-async function initializeAuth() {
-  renderInterface();
-
-  if (window.location.protocol === "file:") {
-    setAccountMessage("Para usar conta, abra pelo servidor local: http://localhost:4177", true);
-    return;
-  }
-
-  setAccountMessage("Verificando sessão...");
-
-  try {
-    const response = await api("/api/auth/me");
-    currentUser = response.user;
-    await loadUserData();
-    renderInterface();
-    setAccountMessage("Sessão ativa. Seus dados estão carregados.");
-  } catch {
-    currentUser = null;
-    resetPrivateState();
-    renderInterface();
-    setAccountMessage("Entre ou crie sua conta para liberar avaliação, treino e progresso.");
-  }
-}
-
 quickTimeButtons.forEach((button) => {
   button.addEventListener("click", () => {
     quickTimeButtons.forEach((item) => item.classList.remove("active"));
@@ -1243,33 +577,23 @@ resetTimer.addEventListener("click", () => {
   setTimer(totalSeconds);
 });
 
-resetWorkout.addEventListener("click", async () => {
+resetWorkout.addEventListener("click", () => {
   completed = [];
-  await saveState();
+  saveState();
   renderAll();
 });
 
-checkinButton.addEventListener("click", async () => {
+checkinButton.addEventListener("click", () => {
   const today = getTodayKey();
   if (!checkins.includes(today)) {
     checkins = [...checkins, today];
-    await saveState();
+    saveState();
     renderAll();
   }
 });
 
-saveBeforePhoto.addEventListener("click", () => savePhoto("before"));
-saveAfterPhoto.addEventListener("click", () => savePhoto("after"));
-removeBeforePhoto.addEventListener("click", () => removePhoto("before"));
-removeAfterPhoto.addEventListener("click", () => removePhoto("after"));
-
-assessmentForm.addEventListener("submit", async (event) => {
+assessmentForm.addEventListener("submit", (event) => {
   event.preventDefault();
-  if (!currentUser) {
-    setAccountMessage("Entre na conta antes de preencher a avaliação.", true);
-    document.querySelector("#conta").scrollIntoView({ behavior: "smooth", block: "start" });
-    return;
-  }
 
   const data = {
     name: document.querySelector("#personName").value.trim(),
@@ -1285,172 +609,41 @@ assessmentForm.addEventListener("submit", async (event) => {
   };
 
   assessment = calculateAssessment(data);
-  workoutPlan = null;
-  exercises = recommendedBasePlan;
-  completed = [];
   syncProgressFromAssessment(assessment);
-  await saveState();
-  renderInterface();
-  setAccountMessage("Avaliação salva no seu painel.");
-  document.querySelector("#montagem").scrollIntoView({ behavior: "smooth", block: "start" });
+  saveState();
+  renderAssessmentResults(assessment);
+  renderProgress();
+  unlockPlan();
+  document.querySelector("#progresso").scrollIntoView({ behavior: "smooth", block: "start" });
 });
 
-progressForm.addEventListener("submit", async (event) => {
+progressForm.addEventListener("submit", (event) => {
   event.preventDefault();
-  if (!currentUser || !assessment) return;
 
   progress.startDate = document.querySelector("#programStartDate").value;
   progress.initialWeight = Number(document.querySelector("#initialWeight").value);
   progress.goalWeight = Number(document.querySelector("#progressGoalWeight").value);
 
   const date = document.querySelector("#measurementDate").value;
-  const measurement = {
-    date,
-    weight: Number(document.querySelector("#currentMeasurementWeight").value),
-    waist: numberOrNull("#measurementWaist"),
-    hip: numberOrNull("#measurementHip"),
-    arm: numberOrNull("#measurementArm"),
-    pain: numberOrNull("#painLevel"),
-    energy: numberOrNull("#energyLevel"),
-    sleep: numberOrNull("#sleepHours"),
-    notes: document.querySelector("#checkinNotes").value.trim()
-  };
+  const weight = Number(document.querySelector("#currentMeasurementWeight").value);
   const withoutSameDate = progress.measurements.filter((item) => item.date !== date);
-  progress.measurements = sortMeasurements([...withoutSameDate, measurement]);
+  progress.measurements = sortMeasurements([...withoutSameDate, { date, weight }]);
 
-  await saveState();
+  saveState();
   renderProgress();
-  renderProgressLogs();
+});
+
+if (assessment) {
+  fillAssessmentForm(assessment);
+  renderAssessmentResults(assessment);
+  syncProgressFromAssessment(assessment);
+  renderProgress();
+  unlockPlan();
+} else {
   document.querySelector("#measurementDate").value = getTodayInputValue();
-  clearMeasurementExtras();
-});
-
-recommendedMode.addEventListener("click", () => setBuilderMode("recommended"));
-customMode.addEventListener("click", () => setBuilderMode("custom"));
-
-generateRecommendedPlan.addEventListener("click", async () => {
-  if (!assessment) return;
-  await activateWorkoutPlan("recommended", buildRecommendedPlan(assessment));
-});
-
-customWorkoutForm.addEventListener("submit", async (event) => {
-  event.preventDefault();
-  if (!assessment) return;
-
-  const activeDays = weekDays.filter((day) => document.querySelector(`#focus-${day.id}`).value !== "rest").length;
-  if (activeDays < 2) {
-    builderStatus.textContent = "Escolha pelo menos dois dias ativos para montar o treino.";
-    return;
-  }
-
-  const customPlan = buildCustomPlan(assessment);
-  await activateWorkoutPlan("custom", customPlan.exercises, customPlan.focusMap);
-});
-
-showLogin.addEventListener("click", () => setAccountMode("login"));
-showRegister.addEventListener("click", () => setAccountMode("register"));
-showRecover.addEventListener("click", () => setAccountMode("recover"));
-
-registerForm.addEventListener("submit", async (event) => {
-  event.preventDefault();
-  setAccountMessage("Criando conta...");
-
-  try {
-    const response = await api("/api/auth/register", {
-      method: "POST",
-      body: {
-        name: document.querySelector("#registerName").value.trim(),
-        email: document.querySelector("#registerEmail").value.trim(),
-        password: document.querySelector("#registerPassword").value
-      }
-    });
-    registerForm.reset();
-    await enterSession(response.user, "Conta criada. Agora preencha sua avaliação.");
-  } catch (error) {
-    setAccountMessage(error.message, true);
-  }
-});
-
-loginForm.addEventListener("submit", async (event) => {
-  event.preventDefault();
-  setAccountMessage("Entrando...");
-
-  try {
-    const response = await api("/api/auth/login", {
-      method: "POST",
-      body: {
-        email: document.querySelector("#loginEmail").value.trim(),
-        password: document.querySelector("#loginPassword").value
-      }
-    });
-    loginForm.reset();
-    await enterSession(response.user, "Login realizado. Seu painel foi carregado.");
-  } catch (error) {
-    setAccountMessage(error.message, true);
-  }
-});
-
-recoverForm.addEventListener("submit", async (event) => {
-  event.preventDefault();
-  setAccountMessage("Gerando recuperação...");
-
-  try {
-    const response = await api("/api/auth/forgot-password", {
-      method: "POST",
-      body: {
-        email: document.querySelector("#recoverEmail").value.trim()
-      }
-    });
-
-    if (response.resetToken) {
-      document.querySelector("#resetToken").value = response.resetToken;
-      setAccountMode("reset");
-      setAccountMessage("Código gerado. No modo local, ele já aparece preenchido para redefinir a senha.");
-    } else {
-      setAccountMessage(response.message);
-    }
-  } catch (error) {
-    setAccountMessage(error.message, true);
-  }
-});
-
-resetForm.addEventListener("submit", async (event) => {
-  event.preventDefault();
-  setAccountMessage("Redefinindo senha...");
-
-  try {
-    const response = await api("/api/auth/reset-password", {
-      method: "POST",
-      body: {
-        token: document.querySelector("#resetToken").value.trim(),
-        newPassword: document.querySelector("#resetPassword").value
-      }
-    });
-    resetForm.reset();
-    setAccountMode("login");
-    setAccountMessage(response.message);
-  } catch (error) {
-    setAccountMessage(error.message, true);
-  }
-});
-
-logoutButton.addEventListener("click", async () => {
-  try {
-    await api("/api/auth/logout", { method: "POST" });
-  } catch {
-    // Mesmo com falha de rede, limpamos a tela local para proteger os dados visíveis.
-  }
-
-  currentUser = null;
-  resetPrivateState();
-  renderInterface();
-  setAccountMessage("Você saiu da conta. Os dados privados foram ocultados.");
-  history.replaceState(null, "", "#conta");
-  document.querySelector("#conta").scrollIntoView({ behavior: "smooth", block: "start" });
-});
-
-window.addEventListener("hashchange", redirectLockedHash);
+  renderProgress();
+}
 
 document.querySelector('[data-seconds="60"]').classList.add("active");
+renderAll();
 updateTimerDisplay();
-initializeAuth();
