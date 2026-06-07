@@ -1,30 +1,34 @@
-﻿const recommendedBasePlan = [
+const recommendedBasePlan = [
   {
     id: "segunda",
     name: "Segunda - MMII + esteira",
-    detail: "Pernas, glÃºteos e quadrÃ­ceps com mÃ¡quinas e baixo impacto.",
+    detail: "Pernas, glúteos e quadríceps com máquinas e baixo impacto.",
     tag: "55 min",
     minutes: 55,
     cardio: "Esteira 25 min pelo protocolo completo.",
     items: [
-      ["Leg press 45", "3x10-12", "75-90s", "Sentar e levantar de cadeira alta", "PÃ©s alinhados, joelhos nÃ£o entram para dentro, sem travar a lombar."],
-      ["Cadeira extensora", "3x12", "60s", "ExtensÃ£o de joelho sentado sem carga", "Suba controlado e pare se houver dor na frente do joelho."],
-      ["Cadeira abdutora", "3x15", "45-60s", "AbduÃ§Ã£o lateral em pÃ© segurando apoio", "Tronco firme, movimento curto e sem jogar o quadril."],
-      ["ElevaÃ§Ã£o pÃ©lvica", "3x10-12", "60s", "Ponte de glÃºteos no chÃ£o", "NÃ£o hiperestenda a lombar; suba apertando glÃºteos."]
+      ["Leg press 45", "3x10-12", "75-90s", "Sentar e levantar de cadeira alta", "Pés alinhados, joelhos não entram para dentro, sem travar a lombar."],
+      ["Cadeira extensora", "3x12", "60s", "Extensão de joelho sentado sem carga", "Suba controlado e pare se houver dor na frente do joelho."],
+      ["Cadeira abdutora", "3x15", "45-60s", "Abdução lateral em pé segurando apoio", "Tronco firme, movimento curto e sem jogar o quadril."],
+      ["Elevação pélvica", "3x10-12", "60s", "Ponte de glúteos no chão", "Não hiperestenda a lombar; suba apertando glúteos."],
+      ["Cadeira flexora leve", "2-3x12", "60s", "Flexão de joelho em pé segurando apoio", "Movimento controlado, sem puxar a lombar ou travar o quadril."],
+      ["Panturrilha sentada", "3x12-15", "45s", "Panturrilha segurando apoio", "Suba e desça devagar, sem quicar e sem inclinar o tronco."]
     ]
   },
   {
     id: "terca",
-    name: "TerÃ§a - MMSS + esteira leve",
-    detail: "Costas, ombros e braÃ§os para firmeza e gasto calÃ³rico.",
+    name: "Terça - MMSS + esteira leve",
+    detail: "Costas, ombros e braços para firmeza e gasto calórico.",
     tag: "45 min",
     minutes: 45,
-    cardio: "Esteira leve 10-15 min: inclinaÃ§Ã£o 0-3, velocidade 2-3 km/h.",
+    cardio: "Esteira leve 10-15 min: inclinação 0-3, velocidade 2-3 km/h.",
     items: [
-      ["Puxada frente na polia", "3x12", "60-75s", "Remada com toalha presa com seguranÃ§a", "Peito aberto, ombros longe das orelhas, sem puxar com o pescoÃ§o."],
-      ["Remada sentada", "3x12", "60s", "Remada com garrafas ou mochila leve", "Coluna neutra e abdome ativo, sem balanÃ§ar o tronco."],
-      ["Desenvolvimento de ombros", "3x10", "60s", "Elevar garrafas leves atÃ© a linha dos ombros", "Evite arquear a lombar; carga leve e controle."],
-      ["TrÃ­ceps na polia", "3x12-15", "45-60s", "TrÃ­ceps banco adaptado ou extensÃ£o com garrafa", "Cotovelos prÃ³ximos ao corpo; sem dor no ombro."]
+      ["Puxada frente na polia", "3x12", "60-75s", "Remada com toalha presa com segurança", "Peito aberto, ombros longe das orelhas, sem puxar com o pescoço."],
+      ["Remada sentada", "3x12", "60s", "Remada com garrafas ou mochila leve", "Coluna neutra e abdome ativo, sem balançar o tronco."],
+      ["Desenvolvimento de ombros", "3x10", "60s", "Elevar garrafas leves até a linha dos ombros", "Evite arquear a lombar; carga leve e controle."],
+      ["Tríceps na polia", "3x12-15", "45-60s", "Tríceps banco adaptado ou extensão com garrafa", "Cotovelos próximos ao corpo; sem dor no ombro."],
+      ["Rosca bíceps leve", "2-3x12", "45-60s", "Rosca com garrafas", "Punhos neutros e cotovelos parados, sem jogar o corpo."],
+      ["Face pull leve", "2-3x12", "45-60s", "Abertura de braços com toalha ou elástico", "Abra o peito sem elevar os ombros e sem forçar o pescoço."]
     ]
   },
   {
@@ -35,88 +39,98 @@
     minutes: 25,
     cardio: "Caminhada leve 10-20 min se estiver sem dor.",
     items: [
-      ["Sentar e levantar assistido", "2x8-10", "60s", "Usar cadeira mais alta e apoio das mÃ£os", "Sem cair na cadeira; joelhos acompanham a ponta dos pÃ©s."],
-      ["FlexÃ£o na parede", "2x10-12", "45s", "Afastar ou aproximar os pÃ©s da parede", "Corpo alinhado, sem forÃ§ar punhos ou lombar."],
+      ["Sentar e levantar assistido", "2x8-10", "60s", "Usar cadeira mais alta e apoio das mãos", "Sem cair na cadeira; joelhos acompanham a ponta dos pés."],
+      ["Flexão na parede", "2x10-12", "45s", "Afastar ou aproximar os pés da parede", "Corpo alinhado, sem forçar punhos ou lombar."],
       ["Marcha parada sem impacto", "3x30-45s", "45s", "Marcha sentado em cadeira", "Eleve pouco o joelho se quadril ou lombar incomodar."],
-      ["Mobilidade leve", "5-8 min", "Livre", "Alongamentos sentados", "Sem insistir em dor; movimentos lentos."]
+      ["Mobilidade leve", "5-8 min", "Livre", "Alongamentos sentados", "Sem insistir em dor; movimentos lentos."],
+      ["Prancha inclinada na parede", "2x20-30s", "45s", "Prancha com mãos na bancada", "Corpo reto e abdome ativo, sem afundar a lombar."],
+      ["Respiração diafragmática", "2x45s", "30s", "Sentado com mãos no abdome", "Use para reduzir tensão lombar e controlar o esforço."]
     ]
   },
   {
     id: "quinta",
     name: "Quinta - MMII + esteira",
-    detail: "Posterior, glÃºteos e estabilidade com baixo impacto.",
+    detail: "Posterior, glúteos e estabilidade com baixo impacto.",
     tag: "55 min",
     minutes: 55,
     cardio: "Esteira 25 min pelo protocolo completo.",
     items: [
-      ["Mesa ou cadeira flexora", "3x12", "60s", "FlexÃ£o de joelho em pÃ© segurando apoio", "Evite tirar o quadril do lugar; movimento lento."],
+      ["Mesa ou cadeira flexora", "3x12", "60s", "Flexão de joelho em pé segurando apoio", "Evite tirar o quadril do lugar; movimento lento."],
       ["Leg press com amplitude curta", "3x10", "90s", "Agachamento parcial em cadeira", "Use amplitude sem dor; lombar apoiada."],
-      ["Panturrilha sentada ou em pÃ©", "3x15", "45s", "Panturrilha segurando apoio", "Suba e desÃ§a devagar, sem quicar."],
-      ["Ponte de glÃºteos", "3x12", "60s", "Mesmo exercÃ­cio no colchonete", "Se a lombar reclamar, reduza amplitude."]
+      ["Panturrilha sentada ou em pé", "3x15", "45s", "Panturrilha segurando apoio", "Suba e desça devagar, sem quicar."],
+      ["Ponte de glúteos", "3x12", "60s", "Mesmo exercício no colchonete", "Se a lombar reclamar, reduza amplitude."],
+      ["Cadeira abdutora", "2-3x15", "45-60s", "Abdução lateral em pé com apoio", "Quadril estável, movimento curto e sem jogar o tronco."],
+      ["Glúteo máquina leve", "2-3x12", "60s", "Extensão de quadril em pé segurando apoio", "Não arqueie a lombar; contraia glúteos no final."]
     ]
   },
   {
     id: "sexta",
     name: "Sexta - MMSS + esteira leve",
-    detail: "Peito, costas e braÃ§os com carga moderada.",
+    detail: "Peito, costas e braços com carga moderada.",
     tag: "45 min",
     minutes: 45,
-    cardio: "Esteira leve 10-15 min: inclinaÃ§Ã£o 0-3, velocidade 2-3 km/h.",
+    cardio: "Esteira leve 10-15 min: inclinação 0-3, velocidade 2-3 km/h.",
     items: [
-      ["Chest press ou supino mÃ¡quina", "3x10-12", "60-75s", "FlexÃ£o na parede", "Cotovelos confortÃ¡veis, ombros baixos e lombar apoiada."],
-      ["Remada baixa", "3x12", "60s", "Remada com mochila leve", "Puxe com costas, nÃ£o com impulso."],
-      ["Rosca bÃ­ceps", "3x12-15", "45-60s", "Rosca com garrafas", "Cotovelos parados e punhos neutros."],
-      ["ElevaÃ§Ã£o lateral leve", "2-3x12", "45s", "ElevaÃ§Ã£o lateral com garrafas pequenas", "Suba atÃ© onde nÃ£o doer; pÃ©s firmes no chÃ£o."]
+      ["Chest press ou supino máquina", "3x10-12", "60-75s", "Flexão na parede", "Cotovelos confortáveis, ombros baixos e lombar apoiada."],
+      ["Remada baixa", "3x12", "60s", "Remada com mochila leve", "Puxe com costas, não com impulso."],
+      ["Rosca bíceps", "3x12-15", "45-60s", "Rosca com garrafas", "Cotovelos parados e punhos neutros."],
+      ["Elevação lateral leve", "2-3x12", "45s", "Elevação lateral com garrafas pequenas", "Suba até onde não doer; pés firmes no chão."],
+      ["Tríceps corda ou polia", "2-3x12", "45-60s", "Extensão de tríceps com garrafa", "Cotovelos próximos ao corpo e ombros relaxados."],
+      ["Crucifixo máquina leve", "2-3x12", "60s", "Flexão na parede com amplitude curta", "Não force abertura máxima do ombro."]
     ]
   },
   {
     id: "sabado",
-    name: "SÃ¡bado - funcional em casa",
+    name: "Sábado - funcional em casa",
     detail: "Calistenia militar adaptada, sem pular e sem impacto.",
     tag: "35 min",
     minutes: 35,
-    cardio: "Opcional: caminhada leve 10 min apÃ³s o circuito.",
+    cardio: "Opcional: caminhada leve 10 min após o circuito.",
     items: [
-      ["Circuito: marcha + parede + cadeira", "3 voltas de 30s cada", "60-90s", "Fazer tudo sentado se necessÃ¡rio", "Ritmo moderado, sem prender a respiraÃ§Ã£o."],
-      ["Step baixo ou toque no degrau", "2x8 por perna", "60s", "Tocar a ponta do pÃ© em um livro grosso", "Degrau baixo, apoio por perto, sem dor no joelho."],
-      ["Prancha inclinada na parede", "3x20-30s", "45s", "Prancha com mÃ£os na bancada", "Corpo reto e abdome ativo, sem afundar a lombar."],
-      ["Alongamento leve", "6-8 min", "Livre", "Sentado ou deitado", "Alongar panturrilha, posterior, peitoral e costas sem dor."]
+      ["Circuito: marcha + parede + cadeira", "3 voltas de 30s cada", "60-90s", "Fazer tudo sentado se necessário", "Ritmo moderado, sem prender a respiração."],
+      ["Step baixo ou toque no degrau", "2x8 por perna", "60s", "Tocar a ponta do pé em um livro grosso", "Degrau baixo, apoio por perto, sem dor no joelho."],
+      ["Prancha inclinada na parede", "3x20-30s", "45s", "Prancha com mãos na bancada", "Corpo reto e abdome ativo, sem afundar a lombar."],
+      ["Alongamento leve", "6-8 min", "Livre", "Sentado ou deitado", "Alongar panturrilha, posterior, peitoral e costas sem dor."],
+      ["Soco leve sem impacto", "3x30s", "45s", "Socos leves sentado", "Mantenha abdome ativo e não gire a lombar com força."],
+      ["Elevação de calcanhares", "2-3x15", "45s", "Panturrilha segurando apoio", "Movimento lento, sem quicar e com apoio próximo."]
     ]
   },
   {
     id: "domingo",
     name: "Domingo - descanso completo",
-    detail: "RecuperaÃ§Ã£o muscular, sono, hidrataÃ§Ã£o e preparo da prÃ³xima semana.",
+    detail: "Recuperação muscular, sono, hidratação e preparo da próxima semana.",
     tag: "0 min",
     minutes: 0,
-    cardio: "Sem cardio obrigatÃ³rio.",
+    cardio: "Sem cardio obrigatório.",
     items: [
       ["Descanso completo", "Dia livre", "Livre", "Caminhada curta apenas se quiser", "Se houver dor persistente, reduza volume na semana seguinte."],
-      ["Alongamento leve opcional", "5-10 min", "Livre", "RespiraÃ§Ã£o e mobilidade sentada", "NÃ£o force amplitude; descanso tambÃ©m Ã© treino."]
+      ["Alongamento leve opcional", "5-10 min", "Livre", "Respiração e mobilidade sentada", "Não force amplitude; descanso também é treino."]
     ]
   }
 ];
 
 const weekDays = [
   { id: "segunda", label: "Segunda", defaultFocus: "lowerA" },
-  { id: "terca", label: "TerÃ§a", defaultFocus: "upperA" },
+  { id: "terca", label: "Terça", defaultFocus: "upperA" },
   { id: "quarta", label: "Quarta", defaultFocus: "active" },
   { id: "quinta", label: "Quinta", defaultFocus: "lowerB" },
   { id: "sexta", label: "Sexta", defaultFocus: "upperB" },
-  { id: "sabado", label: "SÃ¡bado", defaultFocus: "functional" },
+  { id: "sabado", label: "Sábado", defaultFocus: "functional" },
   { id: "domingo", label: "Domingo", defaultFocus: "rest" }
 ];
 
 const focusLabels = {
-  lowerA: "MMII: quadrÃ­ceps e glÃºteos",
+  lowerA: "MMII: quadríceps e glúteos",
   lowerB: "MMII: posterior e estabilidade",
-  upperA: "MMSS: costas, ombros e trÃ­ceps",
-  upperB: "MMSS: peito, costas e bÃ­ceps",
+  upperA: "MMSS: costas, ombros e tríceps",
+  upperB: "MMSS: peito, costas e bíceps",
   cardio: "Cardio de baixo impacto",
   active: "Descanso ativo",
   functional: "Funcional adaptado",
   rest: "Descanso completo"
 };
+
+const exercisesPerSession = 6;
 
 const exerciseLibrary = [
   {
@@ -127,7 +141,7 @@ const exerciseLibrary = [
     prescription: "3x10-12",
     rest: "75-90s",
     home: "Sentar e levantar de cadeira alta",
-    safety: "Use amplitude sem dor, lombar apoiada e joelhos alinhados com os pÃ©s."
+    safety: "Use amplitude sem dor, lombar apoiada e joelhos alinhados com os pés."
   },
   {
     id: "cadeira-extensora",
@@ -136,7 +150,7 @@ const exerciseLibrary = [
     name: "Cadeira extensora",
     prescription: "2-3x12",
     rest: "60s",
-    home: "ExtensÃ£o de joelho sentado sem carga",
+    home: "Extensão de joelho sentado sem carga",
     safety: "Suba devagar e pare se houver dor na frente do joelho."
   },
   {
@@ -146,7 +160,7 @@ const exerciseLibrary = [
     name: "Cadeira ou mesa flexora",
     prescription: "3x12",
     rest: "60s",
-    home: "FlexÃ£o de joelho em pÃ© segurando apoio",
+    home: "Flexão de joelho em pé segurando apoio",
     safety: "Evite jogar o quadril para frente; movimento curto e controlado."
   },
   {
@@ -156,7 +170,7 @@ const exerciseLibrary = [
     name: "Cadeira abdutora",
     prescription: "3x15",
     rest: "45-60s",
-    home: "AbduÃ§Ã£o lateral em pÃ© com apoio",
+    home: "Abdução lateral em pé com apoio",
     safety: "Tronco firme e sem inclinar o corpo para compensar."
   },
   {
@@ -166,8 +180,8 @@ const exerciseLibrary = [
     name: "Puxada frente na polia",
     prescription: "3x10-12",
     rest: "60-75s",
-    home: "Remada com toalha presa com seguranÃ§a",
-    safety: "Ombros longe das orelhas e pescoÃ§o relaxado."
+    home: "Remada com toalha presa com segurança",
+    safety: "Ombros longe das orelhas e pescoço relaxado."
   },
   {
     id: "remada-sentada",
@@ -183,20 +197,20 @@ const exerciseLibrary = [
     id: "chest-press",
     place: "academia",
     group: "MMSS",
-    name: "Chest press ou supino mÃ¡quina",
+    name: "Chest press ou supino máquina",
     prescription: "3x10-12",
     rest: "60-75s",
-    home: "FlexÃ£o na parede",
-    safety: "Cotovelos confortÃ¡veis e lombar apoiada."
+    home: "Flexão na parede",
+    safety: "Cotovelos confortáveis e lombar apoiada."
   },
   {
     id: "triceps-polia",
     place: "academia",
     group: "MMSS",
-    name: "TrÃ­ceps na polia",
+    name: "Tríceps na polia",
     prescription: "3x12-15",
     rest: "45-60s",
-    home: "ExtensÃ£o de trÃ­ceps com garrafa",
+    home: "Extensão de tríceps com garrafa",
     safety: "Cotovelos proximos ao corpo, sem dor no ombro."
   },
   {
@@ -207,33 +221,33 @@ const exerciseLibrary = [
     prescription: "2-3x8-12",
     rest: "60-90s",
     home: "Usar cadeira alta e apoio das maos",
-    safety: "Sente sem despencar; joelhos acompanham a ponta dos pÃ©s."
+    safety: "Sente sem despencar; joelhos acompanham a ponta dos pés."
   },
   {
     id: "ponte-gluteos",
     place: "casa",
     group: "MMII",
-    name: "Ponte de glÃºteos",
+    name: "Ponte de glúteos",
     prescription: "3x10-12",
     rest: "60s",
-    home: "Mesmo exercÃ­cio no colchonete",
-    safety: "Suba contraindo glÃºteos sem hiperestender a lombar."
+    home: "Mesmo exercício no colchonete",
+    safety: "Suba contraindo glúteos sem hiperestender a lombar."
   },
   {
     id: "flexao-parede",
     place: "casa",
     group: "MMSS",
-    name: "FlexÃ£o na parede",
+    name: "Flexão na parede",
     prescription: "2-3x10-12",
     rest: "45-60s",
     home: "Aproxime ou afaste os pes da parede",
-    safety: "Corpo alinhado, punhos confortÃ¡veis e sem prender a respiraÃ§Ã£o."
+    safety: "Corpo alinhado, punhos confortáveis e sem prender a respiração."
   },
   {
     id: "rosca-garrafa",
     place: "casa",
     group: "MMSS",
-    name: "Rosca bÃ­ceps com garrafas",
+    name: "Rosca bíceps com garrafas",
     prescription: "3x12-15",
     rest: "45-60s",
     home: "Usar garrafas leves ou mochila pequena",
@@ -256,8 +270,8 @@ const exerciseLibrary = [
     name: "Dead bug adaptado",
     prescription: "2x6-8 por lado",
     rest: "45-60s",
-    home: "Deitado, mexer um braÃ§o ou uma perna por vez",
-    safety: "Mantenha lombar confortÃ¡vel; reduza amplitude se incomodar."
+    home: "Deitado, mexer um braço ou uma perna por vez",
+    safety: "Mantenha lombar confortável; reduza amplitude se incomodar."
   },
   {
     id: "esteira-inclinada",
@@ -265,9 +279,9 @@ const exerciseLibrary = [
     group: "Cardio",
     name: "Esteira inclinada sem impacto",
     prescription: "10-25 min",
-    rest: "Conforme necessÃ¡rio",
+    rest: "Conforme necessário",
     home: "Caminhada leve em local plano",
-    safety: "Sem corrida; reduza inclinaÃ§Ã£o se joelho, quadril ou lombar reclamarem."
+    safety: "Sem corrida; reduza inclinação se joelho, quadril ou lombar reclamarem."
   },
   {
     id: "marcha-sentada",
@@ -277,7 +291,7 @@ const exerciseLibrary = [
     prescription: "3x30-45s",
     rest: "45-60s",
     home: "Fazer sentado se houver dor",
-    safety: "Eleve pouco o joelho e mantenha respiraÃ§Ã£o fluida."
+    safety: "Eleve pouco o joelho e mantenha respiração fluida."
   },
   {
     id: "mobilidade-quadril",
@@ -287,7 +301,7 @@ const exerciseLibrary = [
     prescription: "5-8 min",
     rest: "Livre",
     home: "Movimentos sentados ou deitados",
-    safety: "Sem forÃ§ar amplitude; mobilidade nÃ£o deve virar dor."
+    safety: "Sem forçar amplitude; mobilidade não deve virar dor."
   },
   {
     id: "alongamento-peitoral",
@@ -317,13 +331,13 @@ const exerciseLibrary = [
     prescription: "2-3x8-10",
     rest: "90s",
     home: "Agachamento parcial na cadeira",
-    safety: "Banco alto, tronco firme e sem descer alem do conforto."
+    safety: "Banco alto, tronco firme e sem descer além do conforto."
   },
   {
     id: "gluteo-maquina",
     place: "academia",
     group: "MMII",
-    name: "GlÃºteo mÃ¡quina",
+    name: "Glúteo máquina",
     prescription: "3x10-12",
     rest: "60s",
     home: "Coice em pe segurando apoio",
@@ -333,10 +347,10 @@ const exerciseLibrary = [
     id: "cabo-abducao",
     place: "academia",
     group: "MMII",
-    name: "AbduÃ§Ã£o no cabo",
+    name: "Abdução no cabo",
     prescription: "2-3x12 por lado",
     rest: "45-60s",
-    home: "AbduÃ§Ã£o lateral sem carga",
+    home: "Abdução lateral sem carga",
     safety: "Carga leve, apoio firme e movimento curto."
   },
   {
@@ -377,13 +391,13 @@ const exerciseLibrary = [
     prescription: "3x10-12",
     rest: "60-75s",
     home: "Remada unilateral com mochila",
-    safety: "Prefira apoio no peito quando possÃ­vel para poupar lombar."
+    safety: "Prefira apoio no peito quando possível para poupar lombar."
   },
   {
     id: "maquina-ombro",
     place: "academia",
     group: "MMSS",
-    name: "Desenvolvimento de ombros na mÃ¡quina",
+    name: "Desenvolvimento de ombros na máquina",
     prescription: "2-3x10",
     rest: "60s",
     home: "Elevar garrafas ate a linha dos ombros",
@@ -397,27 +411,27 @@ const exerciseLibrary = [
     prescription: "2-3x12-15",
     rest: "45-60s",
     home: "Remada alta leve com elastico",
-    safety: "Movimento controlado, sem dor no ombro ou pescoÃ§o."
+    safety: "Movimento controlado, sem dor no ombro ou pescoço."
   },
   {
     id: "crucifixo-maquina",
     place: "academia",
     group: "MMSS",
-    name: "Crucifixo na mÃ¡quina",
+    name: "Crucifixo na máquina",
     prescription: "2-3x10-12",
     rest: "60s",
-    home: "FlexÃ£o na parede com amplitude curta",
-    safety: "NÃ£o force abertura mÃ¡xima do ombro."
+    home: "Flexão na parede com amplitude curta",
+    safety: "Não force abertura máxima do ombro."
   },
   {
     id: "rosca-maquina",
     place: "academia",
     group: "MMSS",
-    name: "Rosca bÃ­ceps na mÃ¡quina",
+    name: "Rosca bíceps na máquina",
     prescription: "2-3x12",
     rest: "45-60s",
     home: "Rosca com garrafas ou mochila",
-    safety: "Punhos neutros e cotovelos apoiados se possÃ­vel."
+    safety: "Punhos neutros e cotovelos apoiados se possível."
   },
   {
     id: "step-touch",
@@ -436,7 +450,7 @@ const exerciseLibrary = [
     name: "Boxe sombra sentado ou em pe",
     prescription: "3x30-45s",
     rest: "45-60s",
-    home: "Socos leves no ar, sentado se necessÃ¡rio",
+    home: "Socos leves no ar, sentado se necessário",
     safety: "Ombros relaxados e intensidade moderada."
   },
   {
@@ -457,7 +471,7 @@ const exerciseLibrary = [
     prescription: "2x6-8 por lado",
     rest: "45-60s",
     home: "Em quatro apoios ou apoiado na mesa",
-    safety: "NÃ£o gire o quadril e mantenha a lombar neutra."
+    safety: "Não gire o quadril e mantenha a lombar neutra."
   },
   {
     id: "elevacao-lateral-sentada",
@@ -476,7 +490,7 @@ const exerciseLibrary = [
     name: "Remada com elastico",
     prescription: "3x12",
     rest: "60s",
-    home: "ElÃ¡stico preso com seguranÃ§a ou mochila",
+    home: "Elástico preso com segurança ou mochila",
     safety: "Confira a fixacao antes de puxar."
   },
   {
@@ -497,7 +511,7 @@ const exerciseLibrary = [
     prescription: "3-5 min",
     rest: "Livre",
     home: "Sentado ou em pe com apoio",
-    safety: "Movimento leve; nÃ£o force se houver dor no tendÃ£o ou joelho."
+    safety: "Movimento leve; não force se houver dor no tendão ou joelho."
   },
   {
     id: "respiracao-diafragma",
@@ -507,7 +521,7 @@ const exerciseLibrary = [
     prescription: "3-5 min",
     rest: "Livre",
     home: "Sentado ou deitado",
-    safety: "Use para recuperar fÃ´lego e reduzir tensÃ£o lombar."
+    safety: "Use para recuperar fôlego e reduzir tensão lombar."
   }
 ];
 
@@ -565,6 +579,12 @@ const libraryGroup = document.querySelector("#libraryGroup");
 const libraryDay = document.querySelector("#libraryDay");
 const exerciseLibraryList = document.querySelector("#exerciseLibraryList");
 const libraryStatus = document.querySelector("#libraryStatus");
+const manualExerciseName = document.querySelector("#manualExerciseName");
+const manualExercisePrescription = document.querySelector("#manualExercisePrescription");
+const manualExerciseRest = document.querySelector("#manualExerciseRest");
+const manualExerciseHome = document.querySelector("#manualExerciseHome");
+const manualExerciseSafety = document.querySelector("#manualExerciseSafety");
+const addManualExerciseButton = document.querySelector("#addManualExercise");
 const recommendationSummary = document.querySelector("#recommendationSummary");
 const generateRecommendedPlan = document.querySelector("#generateRecommendedPlan");
 const builderStatus = document.querySelector("#builderStatus");
@@ -591,7 +611,7 @@ let progress = createEmptyProgress();
 let progressPhotos = createEmptyPhotos();
 let nutrition = createEmptyNutrition();
 let workoutPlan = null;
-let exercises = recommendedBasePlan;
+let exercises = ensureSixExerciseSessions(recommendedBasePlan);
 let customLibraryItems = {};
 let totalSeconds = 60;
 let remainingSeconds = 60;
@@ -648,7 +668,7 @@ async function api(path, options = {}) {
   const payload = text ? JSON.parse(text) : {};
 
   if (!response.ok) {
-    throw new Error(payload.message || "NÃ£o foi possÃ­vel concluir a aÃ§Ã£o.");
+    throw new Error(payload.message || "Não foi possível concluir a ação.");
   }
 
   return payload;
@@ -675,7 +695,7 @@ async function saveState() {
       body: getStatePayload()
     });
   } catch (error) {
-    setAccountMessage(`NÃ£o foi possÃ­vel salvar agora: ${error.message}`, true);
+    setAccountMessage(`Não foi possível salvar agora: ${error.message}`, true);
   }
 }
 
@@ -748,7 +768,12 @@ function hydrateState(data = {}) {
   progressPhotos = normalizePhotos(source.progressPhotos);
   nutrition = normalizeNutrition(source.nutrition);
   workoutPlan = source.workoutPlan?.exercises?.length ? source.workoutPlan : null;
-  exercises = workoutPlan?.exercises?.length ? workoutPlan.exercises : recommendedBasePlan;
+  if (workoutPlan?.exercises?.length) {
+    workoutPlan.exercises = ensureSixExerciseSessions(workoutPlan.exercises, workoutPlan.focusMap || {});
+    exercises = workoutPlan.exercises;
+  } else {
+    exercises = ensureSixExerciseSessions(recommendedBasePlan);
+  }
 }
 
 function resetPrivateState() {
@@ -759,7 +784,7 @@ function resetPrivateState() {
   progressPhotos = createEmptyPhotos();
   nutrition = createEmptyNutrition();
   workoutPlan = null;
-  exercises = recommendedBasePlan;
+  exercises = ensureSixExerciseSessions(recommendedBasePlan);
   assessmentForm.reset();
   progressForm.reset();
   nutritionForm.reset();
@@ -835,13 +860,13 @@ function getLockReason(section) {
   }
 
   if (section.classList.contains("requires-assessment") && !assessment) {
-    return "Preencha a avaliaÃ§Ã£o para liberar esta Ã¡rea.";
+    return "Preencha a avaliação para liberar esta área.";
   }
 
   if (section.classList.contains("requires-plan") && !hasActivePlan()) {
     return assessment
-      ? "Escolha um treino recomendado ou personalizado para liberar esta Ã¡rea."
-      : "Preencha a avaliaÃ§Ã£o e monte seu treino para liberar esta Ã¡rea.";
+      ? "Escolha um treino recomendado ou personalizado para liberar esta área."
+      : "Preencha a avaliação e monte seu treino para liberar esta área.";
   }
 
   return "";
@@ -882,36 +907,36 @@ function redirectLockedHash() {
 
 function renderAssessmentResults(result) {
   if (!result) {
-    assessmentResults.innerHTML = `<p>O resultado aparecerÃ¡ aqui apÃ³s o preenchimento.</p>`;
+    assessmentResults.innerHTML = `<p>O resultado aparecerá aqui após o preenchimento.</p>`;
     return;
   }
 
   const waistText = result.waist
     ? `<small>Cintura informada: ${formatNumber(result.waist, 1)} cm.</small>`
-    : "<small>CircunferÃªncia abdominal nÃ£o informada.</small>";
+    : "<small>Circunferência abdominal não informada.</small>";
   const goalText = result.targetLoss > 0
     ? `${formatNumber(result.targetLoss, 1)} kg em aproximadamente ${result.weeksFast}-${result.weeksSlow} semanas`
     : "Meta igual ou acima do peso atual";
   const limitationsText = result.limitations.length
     ? result.limitations.map(escapeHtml).join(", ")
-    : "Nenhuma limitaÃ§Ã£o marcada";
+    : "Nenhuma limitação marcada";
   const needsClearance = result.limitations.some((item) =>
-    /cardÃ­acos|hÃ©rnia|dor no joelho|dor na lombar|dor no quadril/i.test(item)
+    /cardíacos|hérnia|dor no joelho|dor na lombar|dor no quadril/i.test(item)
   );
   const clearanceText = needsClearance
-    ? " Antes de aumentar carga ou inclinaÃ§Ã£o, busque liberaÃ§Ã£o profissional e ajuste qualquer exercÃ­cio que cause dor."
+    ? " Antes de aumentar carga ou inclinação, busque liberação profissional e ajuste qualquer exercício que cause dor."
     : "";
 
   assessmentResults.innerHTML = `
     <div class="result-grid">
       <article class="result-card"><span>IMC</span><strong>${formatNumber(result.bmi, 1)}</strong><small>${result.bmiClass}</small></article>
       <article class="result-card"><span>TMB estimada</span><strong>${formatNumber(result.bmr)} kcal</strong><small>Energia basal em repouso.</small></article>
-      <article class="result-card"><span>GET/TDEE</span><strong>${formatNumber(result.tdee)} kcal</strong><small>Estimativa diÃ¡ria com atividade.</small></article>
-      <article class="result-card"><span>Faixa para emagrecimento</span><strong>${formatNumber(result.caloriesLow)}-${formatNumber(result.caloriesHigh)} kcal</strong><small>DÃ©ficit moderado de 10% a 20%.</small></article>
-      <article class="result-card"><span>Perda saudÃ¡vel</span><strong>${formatNumber(result.weeklyLossLow, 1)}-${formatNumber(result.weeklyLossHigh, 1)} kg/sem</strong><small>Estimativa gradual e ajustÃ¡vel.</small></article>
+      <article class="result-card"><span>GET/TDEE</span><strong>${formatNumber(result.tdee)} kcal</strong><small>Estimativa diária com atividade.</small></article>
+      <article class="result-card"><span>Faixa para emagrecimento</span><strong>${formatNumber(result.caloriesLow)}-${formatNumber(result.caloriesHigh)} kcal</strong><small>Déficit moderado de 10% a 20%.</small></article>
+      <article class="result-card"><span>Perda saudável</span><strong>${formatNumber(result.weeklyLossLow, 1)}-${formatNumber(result.weeklyLossHigh, 1)} kg/sem</strong><small>Estimativa gradual e ajustável.</small></article>
       <article class="result-card"><span>Meta estimada</span><strong>${goalText}</strong>${waistText}</article>
     </div>
-    <p class="result-note">Plano liberado para ${escapeHtml(result.name)}. Academia: ${escapeHtml(result.hasGym)}. LimitaÃ§Ãµes: ${limitationsText}.${clearanceText}</p>
+    <p class="result-note">Plano liberado para ${escapeHtml(result.name)}. Academia: ${escapeHtml(result.hasGym)}. Limitações: ${limitationsText}.${clearanceText}</p>
   `;
 }
 
@@ -922,8 +947,8 @@ function fillAssessmentForm(result) {
     "Dor no joelho",
     "Dor na lombar",
     "Dor no quadril",
-    "HÃ©rnia de disco",
-    "Problemas cardÃ­acos"
+    "Hérnia de disco",
+    "Problemas cardíacos"
   ]);
 
   document.querySelector("#personName").value = result.name;
@@ -958,13 +983,17 @@ function getPlanTemplate(focus) {
     return {
       id: "cardio",
       name: "Cardio de baixo impacto",
-      detail: "Caminhada confortÃ¡vel e mobilidade, sem corrida ou saltos.",
+      detail: "Caminhada confortável e mobilidade, sem corrida ou saltos.",
       tag: "30 min",
       minutes: 30,
       cardio: "Use o protocolo de esteira de 25 minutos ou caminhe em local plano.",
       items: [
-        ["Caminhada progressiva", "20-25 min", "Conforme necessÃ¡rio", "Marcha sentada ou caminhada em casa", "Mantenha postura ereta e reduza o ritmo se houver dor."],
-        ["Mobilidade leve", "5-8 min", "Livre", "Movimentos sentados", "Sem forÃ§ar joelhos, quadril ou lombar."]
+        ["Caminhada progressiva", "20-25 min", "Conforme necessário", "Marcha sentada ou caminhada em casa", "Mantenha postura ereta e reduza o ritmo se houver dor."],
+        ["Mobilidade leve", "5-8 min", "Livre", "Movimentos sentados", "Sem forçar joelhos, quadril ou lombar."],
+        ["Marcha parada sem impacto", "3x30-45s", "45s", "Marcha sentado em cadeira", "Eleve pouco o joelho e mantenha respiração fluida."],
+        ["Toque lateral curto", "2-3x30s", "45s", "Abrir e fechar um pé por vez sentado", "Passos curtos, sem pular e sem travar o joelho."],
+        ["Respiração diafragmática", "2x45s", "30s", "Sentado com mãos no abdome", "Use para recuperar fôlego e reduzir tensão lombar."],
+        ["Alongamento leve", "5 min", "Livre", "Sentado ou deitado", "Alongue sem dor e sem insistir na amplitude."]
       ]
     };
   }
@@ -972,22 +1001,49 @@ function getPlanTemplate(focus) {
   return templates[focus] || templates.rest;
 }
 
+function inferFocusForDay(day, focusMap = {}) {
+  if (focusMap?.[day.id]) return focusMap[day.id];
+  if (/cardio/i.test(day.name || "")) return "cardio";
+  if (/descanso ativo/i.test(day.name || "")) return "active";
+  if (/funcional/i.test(day.name || "")) return "functional";
+
+  const defaultDay = weekDays.find((item) => item.id === day.id);
+  return defaultDay?.defaultFocus || "active";
+}
+
+function ensureSixExerciseSessions(plan, focusMap = {}) {
+  return cloneData(plan).map((day) => {
+    if (!Array.isArray(day.items) || day.id === "domingo" || day.minutes <= 0) return day;
+    if (day.items.length >= exercisesPerSession) return day;
+
+    const template = cloneData(getPlanTemplate(inferFocusForDay(day, focusMap)));
+    const fallbackItems = Array.isArray(template.items) ? template.items : [];
+
+    fallbackItems.forEach((item) => {
+      const alreadyExists = day.items.some((existing) => existing[0] === item[0]);
+      if (!alreadyExists && day.items.length < exercisesPerSession) day.items.push(item);
+    });
+
+    return day;
+  });
+}
+
 function adaptPlanToAssessment(plan, result) {
-  const adapted = cloneData(plan);
+  const adapted = ensureSixExerciseSessions(plan);
   const limitations = new Set(result?.limitations || []);
-  const trainsAtHome = result?.hasGym === "NÃ£o";
-  const hasJointPain = ["Dor no joelho", "Dor na lombar", "Dor no quadril", "HÃ©rnia de disco"]
+  const trainsAtHome = result?.hasGym === "Não";
+  const hasJointPain = ["Dor no joelho", "Dor na lombar", "Dor no quadril", "Hérnia de disco"]
     .some((item) => limitations.has(item));
-  const hasCardiacRisk = limitations.has("Problemas cardÃ­acos");
+  const hasCardiacRisk = limitations.has("Problemas cardíacos");
 
   adapted.forEach((day) => {
     if (trainsAtHome) {
-      day.detail = `${day.detail} VersÃ£o adaptada para treino em casa.`;
+      day.detail = `${day.detail} Versão adaptada para treino em casa.`;
       day.items = day.items.map((item) => [
         item[3],
         item[1],
         item[2],
-        "Use apoio estÃ¡vel e objetos leves disponÃ­veis",
+        "Use apoio estável e objetos leves disponíveis",
         item[4]
       ]);
       day.cardio = day.cardio
@@ -1000,12 +1056,12 @@ function adaptPlanToAssessment(plan, result) {
         const safety = `${item[4]} Use amplitude curta e interrompa se a dor aumentar.`;
         return [item[0], item[1], item[2], item[3], safety];
       });
-      day.cardio = `${day.cardio} Comece sem inclinaÃ§Ã£o e aumente apenas se estiver sem dor.`;
+      day.cardio = `${day.cardio} Comece sem inclinação e aumente apenas se estiver sem dor.`;
     }
 
     if (hasCardiacRisk && day.minutes > 0) {
-      day.cardio = "Cardio somente apÃ³s liberaÃ§Ã£o mÃ©dica, em intensidade leve e com supervisÃ£o.";
-      day.detail = `${day.detail} Evite esforÃ§o intenso atÃ© receber liberaÃ§Ã£o mÃ©dica.`;
+      day.cardio = "Cardio somente após liberação médica, em intensidade leve e com supervisão.";
+      day.detail = `${day.detail} Evite esforço intenso até receber liberação médica.`;
     }
   });
 
@@ -1029,7 +1085,7 @@ function buildCustomPlan(result) {
     const additions = customLibraryItems[day.id] || [];
     if (additions.length && focus !== "rest") {
       template.items = [...template.items, ...cloneData(additions)];
-      template.detail = `${template.detail} Inclui exercÃ­cios extras escolhidos na lista.`;
+      template.detail = `${template.detail} Inclui exercícios extras escolhidos na lista.`;
     }
     return template;
   });
@@ -1096,7 +1152,7 @@ function renderExerciseLibrary() {
         <button class="button button--secondary add-library-exercise" type="button" data-library-id="${exercise.id}">Adicionar</button>
       </article>
     `).join("")
-    : `<p>Nenhum exercÃ­cio encontrado para esse filtro.</p>`;
+    : `<p>Nenhum exercício encontrado para esse filtro.</p>`;
 
   exerciseLibraryList.querySelectorAll(".add-library-exercise").forEach((button) => {
     button.addEventListener("click", () => addLibraryExercise(button.dataset.libraryId));
@@ -1112,7 +1168,7 @@ function addLibraryExercise(id) {
   if (!customLibraryItems[dayId]) customLibraryItems[dayId] = [];
   const alreadyAdded = customLibraryItems[dayId].some((item) => item[0] === exercise.name);
   if (alreadyAdded) {
-    libraryStatus.textContent = `${exercise.name} jÃ¡ estÃ¡ na ficha de ${day.label}.`;
+    libraryStatus.textContent = `${exercise.name} já está na ficha de ${day.label}.`;
     return;
   }
 
@@ -1126,19 +1182,57 @@ function addLibraryExercise(id) {
   libraryStatus.textContent = `${exercise.name} adicionado na ficha de ${day.label}.`;
 }
 
+function addManualExercise() {
+  const dayId = libraryDay?.value || "segunda";
+  const day = weekDays.find((item) => item.id === dayId);
+  const name = manualExerciseName?.value.trim() || "";
+  const prescription = manualExercisePrescription?.value.trim() || "";
+  const rest = manualExerciseRest?.value.trim() || "";
+  const home = manualExerciseHome?.value.trim() || "";
+  const safety = manualExerciseSafety?.value.trim() || "";
+
+  if (!day) return;
+  if (!name || !prescription) {
+    libraryStatus.textContent = "Preencha pelo menos o nome do exercício e as séries/repetições.";
+    return;
+  }
+
+  if (!customLibraryItems[dayId]) customLibraryItems[dayId] = [];
+  const alreadyAdded = customLibraryItems[dayId].some((item) => item[0].toLowerCase() === name.toLowerCase());
+  if (alreadyAdded) {
+    libraryStatus.textContent = `${name} já está na ficha de ${day.label}.`;
+    return;
+  }
+
+  customLibraryItems[dayId].push([
+    name,
+    prescription,
+    rest || "60s",
+    home || "Adaptar com peso do corpo ou objeto leve",
+    safety || "Manter postura controlada, evitar dor e reduzir amplitude se necessário."
+  ]);
+
+  manualExerciseName.value = "";
+  manualExercisePrescription.value = "";
+  manualExerciseRest.value = "";
+  manualExerciseHome.value = "";
+  manualExerciseSafety.value = "";
+  libraryStatus.textContent = `${name} adicionado manualmente na ficha de ${day.label}.`;
+}
+
 function renderRecommendationSummary(result) {
   if (!result) {
-    recommendationSummary.textContent = "Conclua a avaliaÃ§Ã£o para receber a recomendaÃ§Ã£o.";
+    recommendationSummary.textContent = "Conclua a avaliação para receber a recomendação.";
     return;
   }
 
   const location = result.hasGym === "Sim" ? "academia" : "casa";
   const limitations = result.limitations.length
-    ? ` com adaptaÃ§Ãµes para ${result.limitations.join(", ")}`
-    : " sem limitaÃ§Ãµes fÃ­sicas marcadas";
+    ? ` com adaptações para ${result.limitations.join(", ")}`
+    : " sem limitações físicas marcadas";
 
   recommendationSummary.textContent =
-    `Semana alternando MMII, MMSS, cardio e recuperaÃ§Ã£o para treino em ${location}${limitations}.`;
+    `Semana alternando MMII, MMSS, cardio e recuperação para treino em ${location}${limitations}.`;
 }
 
 function setBuilderMode(mode) {
@@ -1155,14 +1249,15 @@ function setBuilderMode(mode) {
 }
 
 async function activateWorkoutPlan(mode, plan, focusMap = null) {
-  exercises = plan;
+  exercises = ensureSixExerciseSessions(plan, focusMap || {});
   workoutPlan = { mode, exercises: plan, focusMap };
+  workoutPlan.exercises = exercises;
   completed = completed.filter((id) => exercises.some((exercise) => exercise.id === id));
   await saveState();
   renderInterface();
   builderStatus.textContent = mode === "custom"
     ? "Treino personalizado salvo."
-    : "Treino recomendado pela avaliaÃ§Ã£o montado.";
+    : "Treino recomendado pela avaliação montado.";
   document.querySelector("#treino").scrollIntoView({ behavior: "smooth", block: "start" });
 }
 
@@ -1241,7 +1336,7 @@ function classifyNutritionDay(log, targets) {
   if (!targets?.low || !targets?.high) {
     return {
       label: "sem meta",
-      note: "Preencha a avaliaÃ§Ã£o para comparar com a faixa calÃ³rica.",
+      note: "Preencha a avaliação para comparar com a faixa calórica.",
       warning: false
     };
   }
@@ -1249,7 +1344,7 @@ function classifyNutritionDay(log, targets) {
   if (log.calories < targets.low) {
     return {
       label: "abaixo da faixa",
-      note: "Calorias abaixo da faixa estimada. Evite cortes agressivos e observe fome, energia e compulsÃ£o.",
+      note: "Calorias abaixo da faixa estimada. Evite cortes agressivos e observe fome, energia e compulsão.",
       warning: true
     };
   }
@@ -1257,7 +1352,7 @@ function classifyNutritionDay(log, targets) {
   if (log.calories > targets.high) {
     return {
       label: "acima da faixa",
-      note: "Calorias acima da faixa estimada. Revise porÃ§Ãµes, beliscos, bebidas calÃ³ricas e refeiÃ§Ãµes fora.",
+      note: "Calorias acima da faixa estimada. Revise porções, beliscos, bebidas calóricas e refeições fora.",
       warning: true
     };
   }
@@ -1279,8 +1374,8 @@ function renderNutrition() {
   if (!logs.length) {
     const targetText = targets?.low && targets?.high
       ? `Sua faixa estimada atual: ${formatNumber(targets.low)}-${formatNumber(targets.high)} kcal/dia.`
-      : "Preencha a avaliaÃ§Ã£o para gerar sua faixa calÃ³rica.";
-    nutritionResults.innerHTML = `<p>${targetText} Salve o primeiro registro alimentar para acompanhar a consistÃªncia.</p>`;
+      : "Preencha a avaliação para gerar sua faixa calórica.";
+    nutritionResults.innerHTML = `<p>${targetText} Salve o primeiro registro alimentar para acompanhar a consistência.</p>`;
     nutritionHistory.innerHTML = "";
     return;
   }
@@ -1295,18 +1390,18 @@ function renderNutrition() {
   const latestStatus = classifyNutritionDay(latest, targets);
   const targetText = targets?.low && targets?.high
     ? `${formatNumber(targets.low)}-${formatNumber(targets.high)} kcal`
-    : "AvaliaÃ§Ã£o pendente";
+    : "Avaliação pendente";
   const proteinTargetText = targets?.proteinLow && targets?.proteinHigh
     ? `${targets.proteinLow}-${targets.proteinHigh} g/dia`
-    : "AvaliaÃ§Ã£o pendente";
+    : "Avaliação pendente";
 
   nutritionResults.innerHTML = `
     <div class="nutrition-grid">
-      <article class="nutrition-card"><span>Faixa calÃ³rica</span><strong>${targetText}</strong><small>Estimativa para emagrecimento seguro.</small></article>
-      <article class="nutrition-card"><span>Ãšltimo registro</span><strong>${formatNumber(latest.calories)} kcal</strong><small>${formatDate(latest.date)} | ${latestStatus.label}</small></article>
-      <article class="nutrition-card"><span>MÃ©dia 7 registros</span><strong>${formatNumber(averageCalories)} kcal</strong><small>Use a mÃ©dia, nÃ£o apenas um dia isolado.</small></article>
-      <article class="nutrition-card"><span>ProteÃ­na referÃªncia</span><strong>${proteinTargetText}</strong><small>MÃ©dia registrada: ${averageProtein ? `${formatNumber(averageProtein)} g` : "sem dados"}.</small></article>
-      <article class="nutrition-card"><span>Ãgua</span><strong>${latest.water ? `${formatNumber(latest.water, 1)} L` : "sem dado"}</strong><small>Ãšltimo dia registrado.</small></article>
+      <article class="nutrition-card"><span>Faixa calórica</span><strong>${targetText}</strong><small>Estimativa para emagrecimento seguro.</small></article>
+      <article class="nutrition-card"><span>Último registro</span><strong>${formatNumber(latest.calories)} kcal</strong><small>${formatDate(latest.date)} | ${latestStatus.label}</small></article>
+      <article class="nutrition-card"><span>Média 7 registros</span><strong>${formatNumber(averageCalories)} kcal</strong><small>Use a média, não apenas um dia isolado.</small></article>
+      <article class="nutrition-card"><span>Proteína referência</span><strong>${proteinTargetText}</strong><small>Média registrada: ${averageProtein ? `${formatNumber(averageProtein)} g` : "sem dados"}.</small></article>
+      <article class="nutrition-card"><span>Água</span><strong>${latest.water ? `${formatNumber(latest.water, 1)} L` : "sem dado"}</strong><small>Último dia registrado.</small></article>
       <article class="nutrition-card"><span>Fome</span><strong>${latest.hunger ?? "sem dado"}</strong><small>Escala de 0 a 10.</small></article>
     </div>
     <p class="nutrition-note ${latestStatus.warning ? "warning" : ""}">${latestStatus.note}</p>
@@ -1320,7 +1415,7 @@ function renderNutrition() {
           <strong>${formatDate(log.date)}</strong>
           <span>${formatNumber(log.calories)} kcal | ${status.label}</span>
         </div>
-        <small>ProteÃ­na: ${log.protein ? `${formatNumber(log.protein)} g` : "sem dado"} | Ãgua: ${log.water ? `${formatNumber(log.water, 1)} L` : "sem dado"} | Fome: ${log.hunger ?? "sem dado"}</small>
+        <small>Proteína: ${log.protein ? `${formatNumber(log.protein)} g` : "sem dado"} | Água: ${log.water ? `${formatNumber(log.water, 1)} L` : "sem dado"} | Fome: ${log.hunger ?? "sem dado"}</small>
         ${log.notes ? `<p>${escapeHtml(log.notes)}</p>` : ""}
       </article>
     `;
@@ -1348,20 +1443,20 @@ function calculateProgressStats() {
   const projectedSlowDate = remaining ? addDays(latest.date, Math.ceil(safeSlowWeeks * 7)) : latest.date;
   const projectedFastDate = remaining ? addDays(latest.date, Math.ceil(safeFastWeeks * 7)) : latest.date;
 
-  let trend = "estÃ¡vel";
-  let alert = "Continue registrando semanalmente. Pequenas oscilaÃ§Ãµes sÃ£o normais.";
+  let trend = "estável";
+  let alert = "Continue registrando semanalmente. Pequenas oscilações são normais.";
   let warning = false;
 
   if (pace >= 0.5 && pace <= 1) {
     trend = "perda adequada";
-    alert = "Ritmo dentro da faixa segura de 0,5 a 1 kg por semana. Mantenha consistÃªncia.";
+    alert = "Ritmo dentro da faixa segura de 0,5 a 1 kg por semana. Mantenha consistência.";
   } else if (pace > 1) {
-    trend = "perda muito rÃ¡pida";
-    alert = "Ritmo acima do recomendado. Considere subir um pouco as calorias, reduzir volume ou buscar orientaÃ§Ã£o profissional.";
+    trend = "perda muito rápida";
+    alert = "Ritmo acima do recomendado. Considere subir um pouco as calorias, reduzir volume ou buscar orientação profissional.";
     warning = true;
   } else if (pace > 0 && pace < 0.5) {
     trend = "perda lenta";
-    alert = "Ritmo abaixo de 0,5 kg por semana. Revise adesÃ£o, sono, ingestÃ£o calÃ³rica e regularidade dos treinos.";
+    alert = "Ritmo abaixo de 0,5 kg por semana. Revise adesão, sono, ingestão calórica e regularidade dos treinos.";
   }
 
   return {
@@ -1382,7 +1477,7 @@ function calculateProgressStats() {
 
 function renderWeightChart(measurements) {
   if (!measurements.length) {
-    weightChart.innerHTML = `<text x="32" y="135" fill="#5f6f6b" font-size="18" font-weight="700">Sem mediÃ§Ãµes registradas.</text>`;
+    weightChart.innerHTML = `<text x="32" y="135" fill="#5f6f6b" font-size="18" font-weight="700">Sem medições registradas.</text>`;
     return;
   }
 
@@ -1423,15 +1518,15 @@ function renderProgress() {
   renderWeightChart(measurements);
 
   if (!stats) {
-    progressResults.innerHTML = `<p>Registre a primeira mediÃ§Ã£o para visualizar perda semanal, percentual e projeÃ§Ã£o.</p>`;
+    progressResults.innerHTML = `<p>Registre a primeira medição para visualizar perda semanal, percentual e projeção.</p>`;
   } else {
     progressResults.innerHTML = `
       <div class="progress-grid">
-        <article class="progress-card"><span>Perda desde o inÃ­cio</span><strong>${formatNumber(stats.lost, 1)} kg</strong><small>${formatNumber(stats.percentLost, 1)}% do peso inicial.</small></article>
+        <article class="progress-card"><span>Perda desde o início</span><strong>${formatNumber(stats.lost, 1)} kg</strong><small>${formatNumber(stats.percentLost, 1)}% do peso inicial.</small></article>
         <article class="progress-card"><span>Velocidade atual</span><strong>${formatNumber(stats.pace, 2)} kg/sem</strong><small>${formatNumber(stats.weeksElapsed, 1)} semanas acompanhadas.</small></article>
-        <article class="progress-card"><span>TendÃªncia</span><strong>${stats.trend}</strong><small>Faixa segura alvo: 0,5 a 1 kg/sem.</small></article>
-        <article class="progress-card"><span>ProjeÃ§Ã£o segura</span><strong>${formatDate(stats.projectedFastDate)} a ${formatDate(stats.projectedSlowDate)}</strong><small>Estimativa usando 1 a 0,5 kg por semana.</small></article>
-        <article class="progress-card"><span>Peso atual</span><strong>${formatNumber(stats.latest.weight, 1)} kg</strong><small>MediÃ§Ã£o de ${formatDate(stats.latest.date)}.</small></article>
+        <article class="progress-card"><span>Tendência</span><strong>${stats.trend}</strong><small>Faixa segura alvo: 0,5 a 1 kg/sem.</small></article>
+        <article class="progress-card"><span>Projeção segura</span><strong>${formatDate(stats.projectedFastDate)} a ${formatDate(stats.projectedSlowDate)}</strong><small>Estimativa usando 1 a 0,5 kg por semana.</small></article>
+        <article class="progress-card"><span>Peso atual</span><strong>${formatNumber(stats.latest.weight, 1)} kg</strong><small>Medição de ${formatDate(stats.latest.date)}.</small></article>
         <article class="progress-card"><span>Falta para a meta</span><strong>${formatNumber(stats.remaining, 1)} kg</strong><small>Meta: ${formatNumber(progress.goalWeight, 1)} kg.</small></article>
       </div>
       <p class="progress-note ${stats.warning ? "warning" : ""}">${stats.alert}</p>
@@ -1443,7 +1538,7 @@ function renderProgress() {
       const details = [
         item.waist ? `Cintura ${formatNumber(item.waist, 1)} cm` : null,
         item.hip ? `Quadril ${formatNumber(item.hip, 1)} cm` : null,
-        item.arm ? `BraÃ§o ${formatNumber(item.arm, 1)} cm` : null,
+        item.arm ? `Braço ${formatNumber(item.arm, 1)} cm` : null,
         item.pain !== null && item.pain !== undefined ? `Dor ${item.pain}/10` : null,
         item.energy !== null && item.energy !== undefined ? `Energia ${item.energy}/10` : null,
         item.sleep !== null && item.sleep !== undefined ? `Sono ${formatNumber(item.sleep, 1)} h` : null,
@@ -1460,7 +1555,7 @@ function renderProgress() {
         </div>
       `;
     }).join("")
-    : `<div class="measurement-item"><span>Nenhuma mediÃ§Ã£o</span><span>Comece hoje</span></div>`;
+    : `<div class="measurement-item"><span>Nenhuma medição</span><span>Comece hoje</span></div>`;
 }
 
 function renderPhotoSlot(type) {
@@ -1491,7 +1586,7 @@ function readFileAsDataUrl(file) {
   return new Promise((resolve, reject) => {
     const reader = new FileReader();
     reader.onload = () => resolve(reader.result);
-    reader.onerror = () => reject(new Error("NÃ£o foi possÃ­vel ler a imagem."));
+    reader.onerror = () => reject(new Error("Não foi possível ler a imagem."));
     reader.readAsDataURL(file);
   });
 }
@@ -1500,7 +1595,7 @@ function loadImage(dataUrl) {
   return new Promise((resolve, reject) => {
     const image = new Image();
     image.onload = () => resolve(image);
-    image.onerror = () => reject(new Error("NÃ£o foi possÃ­vel carregar a imagem."));
+    image.onerror = () => reject(new Error("Não foi possível carregar a imagem."));
     image.src = dataUrl;
   });
 }
@@ -1574,7 +1669,7 @@ function renderProgressLogs() {
         <span>${exercise.tag}</span>
       </div>
     `).join("")
-    : `<p>Nenhum treino concluÃ­do ainda.</p>`;
+    : `<p>Nenhum treino concluído ainda.</p>`;
 
   const latestCheckins = [...checkins].sort().reverse().slice(0, 6);
   checkinHistoryList.innerHTML = latestCheckins.length
@@ -1631,14 +1726,14 @@ function renderExercises() {
         <strong>${item[0]}</strong>
         <span>${item[1]} | descanso ${item[2]}</span>
         <em>Casa: ${item[3]}</em>
-        <small>SeguranÃ§a: ${item[4]}</small>
+        <small>Segurança: ${item[4]}</small>
       </li>
     `).join("");
 
     return `
       <article class="exercise-card day-card ${done ? "done" : ""}">
         <button class="exercise-check" type="button" aria-label="Marcar ${exercise.name}" data-id="${exercise.id}">
-          ${done ? "âœ“" : ""}
+          ${done ? "✓" : ""}
         </button>
         <div>
           <h3>${exercise.name}</h3>
@@ -1675,7 +1770,7 @@ function renderSummary() {
     .toString();
   streakCount.textContent = checkins.length.toString();
   todayStatus.textContent = checkins.includes(getTodayKey()) ? "Feito" : "Pendente";
-  checkinButton.textContent = checkins.includes(getTodayKey()) ? "MissÃ£o cumprida hoje" : "Check-in da missÃ£o";
+  checkinButton.textContent = checkins.includes(getTodayKey()) ? "Missão cumprida hoje" : "Check-in da missão";
   checkinButton.disabled = !currentUser || !hasActivePlan() || checkins.includes(getTodayKey());
   resetWorkout.disabled = !currentUser || !hasActivePlan();
 }
@@ -1684,14 +1779,14 @@ function renderHistory() {
   const latest = [...checkins].sort().reverse().slice(0, 7);
 
   if (!latest.length) {
-    historyList.innerHTML = `<div class="history-item"><span>Nenhum check-in ainda</span><span>Comece a missÃ£o hoje</span></div>`;
+    historyList.innerHTML = `<div class="history-item"><span>Nenhum check-in ainda</span><span>Comece a missão hoje</span></div>`;
     return;
   }
 
   historyList.innerHTML = latest.map((dateKey) => `
     <div class="history-item">
       <span>${formatDate(dateKey)}</span>
-      <span>MissÃ£o cumprida</span>
+      <span>Missão cumprida</span>
     </div>
   `).join("");
 }
@@ -1713,15 +1808,16 @@ function renderInterface() {
     renderAssessmentResults(assessment);
     syncProgressFromAssessment(assessment);
   } else {
-    assessmentResults.innerHTML = `<p>O resultado aparecerÃ¡ aqui apÃ³s o preenchimento.</p>`;
+    assessmentResults.innerHTML = `<p>O resultado aparecerá aqui após o preenchimento.</p>`;
     prepareEmptyProgressForm();
   }
 
   if (workoutPlan?.exercises?.length) {
-    exercises = workoutPlan.exercises;
+    exercises = ensureSixExerciseSessions(workoutPlan.exercises, workoutPlan.focusMap || {});
+    workoutPlan.exercises = exercises;
     setBuilderMode(workoutPlan.mode || "recommended");
   } else {
-    exercises = recommendedBasePlan;
+    exercises = ensureSixExerciseSessions(recommendedBasePlan);
     setBuilderMode("recommended");
   }
 
@@ -1759,7 +1855,7 @@ function startCountdown() {
       window.clearInterval(timerId);
       timerId = null;
       remainingSeconds = 0;
-      timerMessage.textContent = "Descanso finalizado. Volte para a prÃ³xima sÃ©rie!";
+      timerMessage.textContent = "Descanso finalizado. Volte para a próxima série!";
       updateTimerDisplay();
     }
   }, 1000);
@@ -1833,19 +1929,19 @@ async function initializeAuth() {
     return;
   }
 
-  setAccountMessage("Verificando sessÃ£o...");
+  setAccountMessage("Verificando sessão...");
 
   try {
     const response = await api("/api/auth/me");
     currentUser = response.user;
     await loadUserData();
     renderInterface();
-    setAccountMessage("SessÃ£o ativa. Seus dados estÃ£o carregados.");
+    setAccountMessage("Sessão ativa. Seus dados estão carregados.");
   } catch {
     currentUser = null;
     resetPrivateState();
     renderInterface();
-    setAccountMessage("Entre ou crie sua conta para liberar avaliaÃ§Ã£o, treino e progresso.");
+    setAccountMessage("Entre ou crie sua conta para liberar avaliação, treino e progresso.");
   }
 }
 
@@ -1895,7 +1991,7 @@ removeAfterPhoto.addEventListener("click", () => removePhoto("after"));
 assessmentForm.addEventListener("submit", async (event) => {
   event.preventDefault();
   if (!currentUser) {
-    setAccountMessage("Entre na conta antes de preencher a avaliaÃ§Ã£o.", true);
+    setAccountMessage("Entre na conta antes de preencher a avaliação.", true);
     document.querySelector("#conta").scrollIntoView({ behavior: "smooth", block: "start" });
     return;
   }
@@ -1915,12 +2011,12 @@ assessmentForm.addEventListener("submit", async (event) => {
 
   assessment = calculateAssessment(data);
   workoutPlan = null;
-  exercises = recommendedBasePlan;
+  exercises = ensureSixExerciseSessions(recommendedBasePlan);
   completed = [];
   syncProgressFromAssessment(assessment);
   await saveState();
   renderInterface();
-  setAccountMessage("AvaliaÃ§Ã£o salva no seu painel.");
+  setAccountMessage("Avaliação salva no seu painel.");
   document.querySelector("#montagem").scrollIntoView({ behavior: "smooth", block: "start" });
 });
 
@@ -1985,6 +2081,7 @@ recommendedMode.addEventListener("click", () => setBuilderMode("recommended"));
 customMode.addEventListener("click", () => setBuilderMode("custom"));
 libraryPlace.addEventListener("change", renderExerciseLibrary);
 libraryGroup.addEventListener("change", renderExerciseLibrary);
+addManualExerciseButton.addEventListener("click", addManualExercise);
 
 generateRecommendedPlan.addEventListener("click", async () => {
   if (!assessment) return;
@@ -2023,7 +2120,7 @@ registerForm.addEventListener("submit", async (event) => {
       }
     });
     registerForm.reset();
-    await enterSession(response.user, "Conta criada. Agora preencha sua avaliaÃ§Ã£o.");
+    await enterSession(response.user, "Conta criada. Agora preencha sua avaliação.");
   } catch (error) {
     setAccountMessage(error.message, true);
   }
@@ -2097,13 +2194,13 @@ logoutButton.addEventListener("click", async () => {
   try {
     await api("/api/auth/logout", { method: "POST" });
   } catch {
-    // Mesmo com falha de rede, limpamos a tela local para proteger os dados visÃ­veis.
+    // Mesmo com falha de rede, limpamos a tela local para proteger os dados visíveis.
   }
 
   currentUser = null;
   resetPrivateState();
   renderInterface();
-  setAccountMessage("VocÃª saiu da conta. Os dados privados foram ocultados.");
+  setAccountMessage("Você saiu da conta. Os dados privados foram ocultados.");
   history.replaceState(null, "", "#conta");
   document.querySelector("#conta").scrollIntoView({ behavior: "smooth", block: "start" });
 });
