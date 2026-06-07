@@ -1,4 +1,4 @@
-const CACHE_NAME = "move-up-v1";
+const CACHE_NAME = "move-up-v2-mobile-menu";
 const APP_SHELL = [
   "/",
   "/index.html",
