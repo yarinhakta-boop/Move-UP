@@ -359,6 +359,28 @@
               </label>
             </div>
 
+            <div class="manual-exercise">
+              <h3>Adicionar exercício manualmente</h3>
+              <div class="manual-exercise-grid">
+                <label>Nome do exercício
+                  <input id="manualExerciseName" type="text" placeholder="Ex.: Agachamento na cadeira" />
+                </label>
+                <label>Séries, repetições ou tempo
+                  <input id="manualExercisePrescription" type="text" placeholder="Ex.: 3x12 ou 30 segundos" />
+                </label>
+                <label>Descanso
+                  <input id="manualExerciseRest" type="text" placeholder="Ex.: 60s" />
+                </label>
+                <label>Alternativa em casa
+                  <input id="manualExerciseHome" type="text" placeholder="Ex.: Usar cadeira e apoio" />
+                </label>
+                <label>Segurança
+                  <textarea id="manualExerciseSafety" rows="3" placeholder="Ex.: Manter joelhos alinhados e parar se houver dor."></textarea>
+                </label>
+              </div>
+              <button class="button button--secondary" id="addManualExercise" type="button">Adicionar exercício manual</button>
+            </div>
+
             <div class="library-list" id="exerciseLibraryList"></div>
             <p class="library-status" id="libraryStatus" role="status"></p>
           </section>
@@ -487,7 +509,7 @@
     <section class="section protocol-section requires-auth requires-plan is-locked" data-lock="Monte o treino para liberar o protocolo de esteira.">
       <div>
         <p class="eyebrow">Esteira 25 minutos</p>
-        <h2>Protocolo de baixo impacto</h2>
+        <h2>Protocolo de esteira de baixo impacto</h2>
         <p>Use caminhada inclinada, sem corrida. Reduza inclinação ou velocidade se aparecer dor no joelho, quadril ou lombar.</p>
       </div>
       <div class="protocol-grid">
